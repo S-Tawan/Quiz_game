@@ -9,7 +9,16 @@
         $result = mysqli_query($con, $q);
         if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
-        } else {
+            $q_id = $row['quiz_id'];
+            $q_name = $row['quiz_name'];
+            $q_img =  $row['quiz_img'];
+            $q_play = $row['count_play'];
+            $q_rate = $row['quiz_rate'];
+            $q_detail = $row['quiz_detail'];
+            $q_creator = $row['quiz_creator'];
+    
+        }
+         else {
             $text = 'bad end';
         }
     }
