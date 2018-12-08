@@ -17,11 +17,33 @@
             $q_detail = $row['quiz_detail'];
             $q_creator = $row['quiz_creator'];
             $check = 'true';
+            $q_ques = "SELECT `question_id` FROM `question` WHERE `quiz_id` ='$q_id' ORDER BY RAND() ";
+            $re_ques = mysqli_query($con, $q_ques);
+            while($row_ques = mysqli_fetch_assoc($re_ques)){
+                $_SESSION['question'][] = $row_ques['question_id'];
+            }
         }
          else {
             $check = 'fail';
         }
     }
+
+
+    // ทดสอบ
+    function getToken($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+     
+        $codeAlphabet .= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+   
+       for ($i=0; $i < $length; $i++) {
+           $token .= $codeAlphabet[random_int(0, $max-1)];
+       }
+   
+       return $token;
+   }
+   
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +153,15 @@
                                 Correct !!!!!
                                 <script>$('#createName').modal('show')</script>
                                 </h3>
-                            <?php } ?>
+                            <?php
+                           
+                        } 
+                        for($i=0;$i<count($_SESSION['question']);$i++){
+                            echo $_SESSION['question'][$i].'<br>';
+                            
+                        }
+                        echo getToken(6);
+                        ?>
                             
                       
                     </div>
