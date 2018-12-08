@@ -9,6 +9,7 @@
         $result = mysqli_query($con, $q);
         if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
+            $q_id = $row['quiz_id'];
             $q_name = $row['quiz_name'];
             $q_img =  $row['quiz_img'];
             $q_play = $row['count_play'];
@@ -17,8 +18,7 @@
             $q_creator = $row['quiz_creator'];
     
         }
-        else{
-        } else {
+         else {
             $text = 'bad end';
         }
     }
