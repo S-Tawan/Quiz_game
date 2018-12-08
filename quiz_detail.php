@@ -9,7 +9,7 @@
     require 'link_title.php';
     ?>
 </head>
-<body style="background-color:#4d4d4d">
+<body style="background-color:#4d4d4d;font-family:'Courier New', Courier, monospace;">
     <!-- navbar sija -->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -29,33 +29,39 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <!-- header -->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h2 class="modal-title">Quiz ...</h2>
+            <div class="modal-header" style="background-color:#E7B818">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-8" ><h2><strong>Quiz ...</strong></h2></div>
+                        <div class="col-lg-4" ><h5>Create by ...</h5></div>
+                    </div>
             </div>
             <!-- body -->
-            <div class="modal-body">
+            <div class="modal-body" >
                 <center>
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
                         <img src="image\tmp_test_img.png" alt="" sizes="width:100px;height:100px" srcset="">
                     </div>
                 </center>
-                <div class="row">
-                    <div class="col-sm-1" style="background-color:green"></div>
-                    <div class="col-sm-6" style="background-color:blue"><p>Detail ...</p></div>
-                    <div class="col-sm-1" style="background-color:black"></div>
-                    <div class="col-sm-4" style="background-color:red">
-                        <input type="text" name="a" id="">
-                        <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
+                <p></p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <span class="fluid">
+                        <div class="col-sm-8" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail : ...</p></div>
+                        <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                            <p></p><span>rate : </span>
+                            <p></p>
+                            <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
+                            <p></p>
+                        </div>
+                        <div class="col-sm-1" style="border-color:black"></div>
                     </div>
                 </div>
             </div>
             <!-- footer -->
-            <div class="modal-footer">
-                
-            </div>
+            <div class="modal-footer" style="background-color:#E7B818"></div>
             </div>
         </div>
     </div>
