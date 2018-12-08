@@ -1,11 +1,11 @@
 <?php
     require 'server.php';
-    $text = 'start';
+    $check = 'start';
     if ($_GET != null) {
-        $text = $_GET['s_text'];
+        $check = $_GET['s_text'];
     }
-    if($text!='start'){
-        $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$text'";
+    if($check!='start'){
+        $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$check'";
         $result = mysqli_query($con, $q);
         if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
@@ -16,10 +16,11 @@
             $q_rate = $row['quiz_rate'];
             $q_detail = $row['quiz_detail'];
             $q_creator = $row['quiz_creator'];
+            $check = 'true';
     
         }
          else {
-            $text = 'bad end';
+            $check = 'fail';
         }
     }
 ?>
@@ -77,16 +78,26 @@
                                 </button>
                             </div>
                         </div>
+                        <?php
+                            if($check=='fail'){?>
+                               
+                                <h3 style = " color:red;text-align: center;">
+                                    It's wrong Please try again.
+                                </h3>
+                            <?php } 
+                            else if ($check=='true'){?>
+                                <h3 style = " color:green;text-align: center;">
+                                Correct !!!!!
+                                </h3>
+                            <?php } ?>
+                            
+                      
                     </div>
                 </form>
             </div>
             <div class="col-sm-4"></div>
         </div>
-        <?php
-
-        echo $text;
-
-        ?>
+    
     
 
 </body>
