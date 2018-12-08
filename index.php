@@ -64,6 +64,47 @@
         <!-- background -->
         <img src="image\BackGround quizSija.png" style="width:100%;margin-top:-110px">
 
+        <!-- Modal -->
+        <div class="modal" tabindex="-1" role="dialog" id="createName">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <!-- header -->
+            <div class="modal-header" style="background-color:#E7B818">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-8" ><h2><strong>Quiz ...</strong></h2></div>
+                        <div class="col-lg-4" ><h5>Create by ...</h5></div>
+                    </div>
+            </div>
+            <!-- body -->
+            <div class="modal-body" >
+                <center>
+                    <div class="container-fluid" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                        <img src="image\tmp_test_img.png" alt="" sizes="width:100px;height:100px" srcset="">
+                    </div>
+                </center>
+                <p></p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <span class="fluid">
+                        <div class="col-sm-8" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail : ...</p></div>
+                        <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                            <p></p><span>rate : </span>
+                            <p></p>
+                            <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
+                            <p></p>
+                        </div>
+                        <div class="col-sm-1" style="border-color:black"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <div class="modal-footer" style="background-color:#E7B818"></div>
+            </div>
+        </div>
+    </div>
         <!-- form search -->
         <div class="row" style="margin-top:50px">
             <div class="col-sm-4"></div>
@@ -88,6 +129,7 @@
                             else if ($check=='true'){?>
                                 <h3 style = " color:green;text-align: center;">
                                 Correct !!!!!
+                                <script>$('#createName').modal('show')</script>
                                 </h3>
                             <?php } ?>
                             
@@ -98,6 +140,7 @@
             <div class="col-sm-4"></div>
         </div>
     
+        
     
 
 </body>
