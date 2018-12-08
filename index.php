@@ -5,7 +5,7 @@
         $text = $_GET['s_text'];
     }
     if($text!='start'){
-        $q = "SELECT `quiz_id` FROM `quiz` WHERE `quiz_id` ='$text'";
+        $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$text'";
         $result = mysqli_query($con, $q);
         if($row=mysqli_fetch_assoc($result)){
             $text = $row['quiz_id'];

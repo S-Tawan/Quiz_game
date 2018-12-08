@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2018 at 08:46 AM
+-- Generation Time: Dec 08, 2018 at 09:08 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -58,15 +58,16 @@ CREATE TABLE `quiz` (
   `quiz_name` text NOT NULL,
   `quiz_img` text NOT NULL,
   `count_play` int(10) NOT NULL,
-  `quiz_rate` int(2) NOT NULL
+  `quiz_rate` int(2) NOT NULL,
+  `quiz_detail` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`quiz_id`, `quiz_name`, `quiz_img`, `count_play`, `quiz_rate`) VALUES
-('Singha', 'EIEIZA', 'erfghjk.png', 10, 0);
+INSERT INTO `quiz` (`quiz_id`, `quiz_name`, `quiz_img`, `count_play`, `quiz_rate`, `quiz_detail`) VALUES
+('Singha', 'EIEIZA', 'erfghjk.png', 10, 0, '');
 
 -- --------------------------------------------------------
 
