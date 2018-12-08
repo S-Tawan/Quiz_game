@@ -1,5 +1,19 @@
 <?php
     require 'server.php';
+   $text = 'start';
+    if($_GET!=NULL){
+        $text = $_GET['s_text'];
+    }
+    if($text!='start'){
+        $q = "SELECT `quiz_id` FROM `quiz` WHERE `quiz_id` ='$text'";
+        $result = mysqli_query($con, $q);
+        if($row=mysqli_fetch_assoc($result)){
+            $text = $row['quiz_id'];
+        }
+        else{
+            $text = 'bad end';
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -45,10 +59,10 @@
         <div class="row" style="margin-top:50px">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <form>
+                <form action ="index.php" method="GET">
                     <div class="container-fluid">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter QuizCode">
+                            <input type="text" class="form-control" placeholder="Enter QuizCode" name="s_text">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <i class="glyphicon glyphicon-search"></i>
@@ -60,6 +74,11 @@
             </div>
             <div class="col-sm-4"></div>
         </div>
+        <?php
+       
+        echo $text;
+        
+        ?>
     
 
 </body>
