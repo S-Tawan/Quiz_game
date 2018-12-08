@@ -1,16 +1,15 @@
 <?php
     require 'server.php';
-   $text = 'start';
-    if($_GET!=NULL){
+    $text = 'start';
+    if ($_GET != null) {
         $text = $_GET['s_text'];
     }
-    if($text!='start'){
+    if ($text != 'start') {
         $q = "SELECT `quiz_id` FROM `quiz` WHERE `quiz_id` ='$text'";
         $result = mysqli_query($con, $q);
-        if($row=mysqli_fetch_assoc($result)){
+        if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
-        }
-        else{
+        } else {
             $text = 'bad end';
         }
     }
@@ -24,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>QuizSiJa</title>
     <?php
-        require 'link_title.php';
+    require 'link_title.php';
     ?>
 </head>
 <body style="background-color:#252525">
@@ -75,9 +74,9 @@
             <div class="col-sm-4"></div>
         </div>
         <?php
-       
+
         echo $text;
-        
+
         ?>
     
 

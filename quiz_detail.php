@@ -28,18 +28,33 @@
     <div class="modal" tabindex="-1" role="dialog" id="createName">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+            <!-- header -->
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
+                <h2 class="modal-title">Quiz ...</h2>
             </div>
+            <!-- body -->
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <center>
+                    <div class="container-fluid">
+                        <img src="image\tmp_test_img.png" alt="" sizes="width:100px;height:100px" srcset="">
+                    </div>
+                </center>
+                <div class="row">
+                    <div class="col-sm-1" style="background-color:green"></div>
+                    <div class="col-sm-6" style="background-color:blue"><p>Detail ...</p></div>
+                    <div class="col-sm-1" style="background-color:black"></div>
+                    <div class="col-sm-4" style="background-color:red">
+                        <input type="text" name="a" id="">
+                        <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
+                    </div>
+                </div>
             </div>
+            <!-- footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
             </div>
             </div>
         </div>
