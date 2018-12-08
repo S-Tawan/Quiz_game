@@ -74,8 +74,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="row">
-                        <div class="col-lg-8" ><h2><strong>Quiz ...</strong></h2></div>
-                        <div class="col-lg-4" ><h5>Create by ...</h5></div>
+                        <div class="col-lg-8" ><h2><strong><?php echo $q_name ?></strong></h2></div>
+                        <div class="col-lg-4" ><h5>Create by : <?php echo $q_creator ?></h5></div>
                     </div>
             </div>
             <!-- body -->
@@ -89,7 +89,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <span class="fluid">
-                        <div class="col-sm-8" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail : ...</p></div>
+                        <div class="col-sm-8" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail :<br><?php echo $q_detail ?></p></div>
                         <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
                             <p></p><span>rate : </span>
                             <p></p>
