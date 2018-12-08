@@ -26,8 +26,8 @@
     <!-- check login -->
     <!-- Modal -->
     <div class="modal" tabindex="-1" role="dialog" id="createName">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+        <div class="modal-dialog" role="document" style="background-color:#4d4d4d">
+            <div class="modal-content" style="background-color:#4d4d4d">
             <!-- header -->
             <div class="modal-header" style="background-color:#E7B818">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -39,18 +39,19 @@
                     </div>
             </div>
             <!-- body -->
-            <div class="modal-body" >
+            <div class="modal-body">
                 <center>
-                    <div class="container-fluid" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                    <div class="container-fluid" style="border-color:white;border-style:solid;border-radius:5px">
                         <img src="image\tmp_test_img.png" alt="" sizes="width:100px;height:100px" srcset="">
                     </div>
                 </center>
                 <p></p>
-                <div class="container-fluid">
+                <div class="container-fluid" style="color:white">
                     <div class="row">
                         <span class="fluid">
-                        <div class="col-sm-8" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail : ...</p></div>
-                        <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                        <div class="col-sm-7" style="border-color:white;border-style:solid;border-radius:5px"><p></p><p>Detail : ...</p></div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-4" style="border-color:white;border-style:solid;border-radius:5px">
                             <p></p><span>rate : </span>
                             <p></p>
                             <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>

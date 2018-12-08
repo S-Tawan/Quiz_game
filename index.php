@@ -17,7 +17,6 @@
             $q_detail = $row['quiz_detail'];
             $q_creator = $row['quiz_creator'];
             $check = 'true';
-    
         }
          else {
             $check = 'fail';
@@ -65,7 +64,7 @@
         <img src="image\BackGround quizSija.png" style="width:100%;margin-top:-110px">
 
         <!-- Modal -->
-        <div class="modal" tabindex="-1" role="dialog" id="createName">
+        <div class="modal" tabindex="-1" role="dialog" id="createName" style="font-family:'Courier New', Courier, monospace;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <!-- header -->
@@ -89,7 +88,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <span class="fluid">
-                        <div class="col-sm-8" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail :<br><?php echo $q_detail ?></p></div>
+                        <div class="col-sm-7" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail :<br><?php echo $q_detail ?></p></div>
+                        <div class="col-sm-1"></div>
                         <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
                             <p></p><span>rate : </span>
                             <p></p>
