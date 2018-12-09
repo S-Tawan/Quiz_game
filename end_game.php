@@ -26,6 +26,7 @@
         $_SESSION['upscore']++;
     }
     }
+
 //    INSERT INTO `score`(`score_id`, `score_point`, `user_name`, `quiz_id`) VALUES (,[value-2],[value-3],[value-4])
 ?>
 <!DOCTYPE html>
