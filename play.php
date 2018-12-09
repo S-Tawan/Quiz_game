@@ -1,17 +1,17 @@
 <?php
-  require 'server.php';
-// for($i=0;$i<count($_SESSION['question']);$i++){
-//     echo $_SESSION['question'][$i].'<br>';
+//   require 'server.php';
+// // for($i=0;$i<count($_SESSION['question']);$i++){
+// //     echo $_SESSION['question'][$i].'<br>';
     
-// }
-$_SESSION['i']++;
-$i = $_SESSION['i'];
-$now_q = $_SESSION['question'][$i];
-$q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
-$re_ans = mysqli_query($con, $q_ans);
-$q_ques = "SELECT `question_name` FROM `question` WHERE `question_id` ='$now_q' ";
-$re_ques = mysqli_query($con, $q_ques);
-$row_ques = mysqli_fetch_assoc($re_ques);
+// // }
+// $_SESSION['i']++;
+// $i = $_SESSION['i'];
+// $now_q = $_SESSION['question'][$i];
+// $q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
+// $re_ans = mysqli_query($con, $q_ans);
+// $q_ques = "SELECT `question_name` FROM `question` WHERE `question_id` ='$now_q' ";
+// $re_ques = mysqli_query($con, $q_ques);
+// $row_ques = mysqli_fetch_assoc($re_ques);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,12 @@ $row_ques = mysqli_fetch_assoc($re_ques);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
     <style>
         #progressBar {
             width: 90%;
@@ -41,14 +47,14 @@ $row_ques = mysqli_fetch_assoc($re_ques);
         }
         
     </style>
-    <?php
-        require 'link_title.php';
-    ?>
     
 
     <title>QuizSiJa</title>
 </head>
-<body style="background-color:#252525">
+<body>
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+    </nav>
     <div class="row">
         <div class="col-lg-1" ></div>
         <div class="col-lg-10">
@@ -93,10 +99,9 @@ $row_ques = mysqli_fetch_assoc($re_ques);
                     <button class="btn btn-success btn-block" style="padding:20px;" type="submit">Submit&Pass</button>
                 </div>
             </form>
-        </div>
+        </div><input type="text" name="" id="">
         <div class="col-lg-1" ></div>
     </div>
     <script src="script.js"></script>
-    header('Location: ');
 </body>
 </html>
