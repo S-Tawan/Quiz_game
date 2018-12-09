@@ -17,6 +17,7 @@
    }
    return $token;
 }
+
     if($_SESSION['upscore'] == 0){
     $score_id = 'sc_'.getToken(6);
     $q_sc = " INSERT INTO `score`(`score_id`, `score_point`, `user_name`, `quiz_id`) VALUES ('$score_id','$sc','$name','$qz')";
@@ -26,6 +27,15 @@
         $_SESSION['upscore']++;
     }
     }
+
+    $q_rank = "SELECT COUNT(*) AS mycount FROM `score` WHERE `score_point` >= $sc ";
+    $re_rank = mysqli_query($con, $q_rank);
+    $row_rank = mysqli_fetch_assoc($re_rank);
+
+    $q_TOP = "SELECT * FROM `score`  ORDER BY score_point DESC LIMIT 10";
+    $re_TOP = mysqli_query($con, $q_TOP);
+
+
 //    INSERT INTO `score`(`score_id`, `score_point`, `user_name`, `quiz_id`) VALUES (,[value-2],[value-3],[value-4])
 ?>
 <!DOCTYPE html>
@@ -56,7 +66,7 @@
                 <a class="navbar-brand" href="index.php">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $name ?></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $name ?></a></li>
             </ul>
         </div>
     </nav>
@@ -68,15 +78,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p style="color:#03FF80">Total</p>
-                        <p>1/10</p>
+                        <p><?php echo $cr ; ?></p>
                     </div>
                     <div class="col-md-6">
                         <p style="color:#03FF80">Score</p>
-                        <p>100</p>
+                        <p><?php echo $sc ; ?></p>
                     </div>
                 </div>
                 <p style="color:#EBFF01">Rank</p>
-                <p>#1</p>
+                <p><?php echo '#'.$row_rank['mycount'] ; ?></p>
             </div>
         </div>
         <div class="col-md-6">
@@ -95,31 +105,21 @@
                             </tr>
                             </thead>
                             <tbody >
+                                <?php 
+                                $i = 1;
+                                while($row_TOP = mysqli_fetch_assoc($re_TOP)){ 
+                                    
+                                ?>
                             <tr>
-                                <td>#1</td>
-                                <td>Anna</td>
-                                <td>Pitt</td>
+                                <td><?php echo $i ?></td>
+                                <td><?php echo $row_TOP['user_name'] ?></td>
+                                <td><?php echo $row_TOP['score_point'] ?></td>
                             </tr>
-                            <tr>
-                                <td>#1</td>
-                                <td>Anna</td>
-                                <td>Pitt</td>
-                            </tr>
-                            <tr>
-                                <td>#1</td>
-                                <td>Anna</td>
-                                <td>Pitt</td>
-                            </tr>
-                            <tr>
-                                <td>#1</td>
-                                <td>Anna</td>
-                                <td>Pitt</td>
-                            </tr>
-                            <tr>
-                                <td>#1</td>
-                                <td>Anna</td>
-                                <td>Pitt</td>
-                            </tr>
+                                <?php
+                             $i++;
+                            } 
+                             ?>
+                            
                             </tbody>
                         </table>
                     </div>
