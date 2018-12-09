@@ -1,3 +1,13 @@
+<?php
+  require 'server.php';
+for($i=0;$i<count($_SESSION['question']);$i++){
+    echo $_SESSION['question'][$i].'<br>';
+    
+}
+echo $_SESSION['eiei'];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +30,7 @@
 
             <body style="background-color:green">
             <p>2</p>
+            
             </body>
 
             <footer style="background-color:blue">
