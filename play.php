@@ -3,44 +3,44 @@
   if ($_GET != null) {
     $_SESSION['quiz'] =  $_GET['id'];
   }
-for($i=0;$i<count($_SESSION['question']);$i++){
-    echo $_SESSION['question'][$i].'<br>';
-    
-}
-if(isset($_POST['options'])){
-
-    $check = $_POST['options'];
-    $count_time = $_POST['time'];
-    echo $count_time;
-    $q_check = "SELECT `answers_id` FROM `answers` WHERE  `answers_id`= '$check' && `answer_correct` = '1'";
-    $re_check = mysqli_query($con, $q_check);
-    if($row_check = mysqli_fetch_assoc($re_check)){
-        $_SESSION['score'] = $_SESSION['score'] +($count_time*100);
-        $_SESSION['correct']++;
-
-        echo "<br>ถูกต้อง<br>" ;
+    for($i=0;$i<count($_SESSION['question']);$i++){
+        // echo $_SESSION['question'][$i].'<br>';
         
     }
-  
+    if(isset($_POST['options'])){
 
-     $i = ++$_SESSION['counter'] ; 
-   if($i>count($_SESSION['question'])-1){
-       echo "<br>เกิน!!!!!!<br>";
-       header('Location: end_game.php');
-   }
-   
-  echo $_SESSION['score'];
-}
+        $check = $_POST['options'];
+        $count_time = $_POST['time'];
+        // echo $count_time;
+        $q_check = "SELECT `answers_id` FROM `answers` WHERE  `answers_id`= '$check' && `answer_correct` = '1'";
+        $re_check = mysqli_query($con, $q_check);
+        if($row_check = mysqli_fetch_assoc($re_check)){
+            $_SESSION['score'] = $_SESSION['score'] +($count_time*100);
+            $_SESSION['correct']++;
 
-$i = $_SESSION['counter'];
-echo $i;
-$now_q = $_SESSION['question'][$i];
-$q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
-$re_ans = mysqli_query($con, $q_ans);
-$q_ques = "SELECT `question_name`,`question_time`,`question_img` FROM `question` WHERE `question_id` ='$now_q' ";
-$re_ques = mysqli_query($con, $q_ques);
-$row_ques = mysqli_fetch_assoc($re_ques);
-$time = $row_ques['question_time'];
+            // echo "<br>ถูกต้อง<br>" ;
+            
+        }
+    
+
+        $i = ++$_SESSION['counter'] ; 
+        if($i>count($_SESSION['question'])-1){
+            //    echo "<br>เกิน!!!!!!<br>";
+            header('Location: end_game.php');
+        }
+    
+    //   echo $_SESSION['score'];
+    }
+
+    $i = $_SESSION['counter'];
+    // echo $i;
+    $now_q = $_SESSION['question'][$i];
+    $q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
+    $re_ans = mysqli_query($con, $q_ans);
+    $q_ques = "SELECT `question_name`,`question_time`,`question_img` FROM `question` WHERE `question_id` ='$now_q' ";
+    $re_ques = mysqli_query($con, $q_ques);
+    $row_ques = mysqli_fetch_assoc($re_ques);
+    $time = $row_ques['question_time'];
 
 
 // เพิ่มข้อมูล
@@ -52,10 +52,12 @@ $time = $row_ques['question_time'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <style>
         #progressBar {
             width: 90%;
@@ -98,7 +100,19 @@ $time = $row_ques['question_time'];
 
     <title>QuizSiJa</title>
 </head>
-<body style="background-color:#252525">
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.php">Home</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $name ?></a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="row">
         <div class="col-lg-1" ></div>
         <div class="col-lg-10">
