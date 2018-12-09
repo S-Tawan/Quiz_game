@@ -8,4 +8,4 @@ function progress(timeleft, timetotal, $element) {
     }
 };
 
-progress(10, 10, $('#progressBar'));
+progress(60,60, $('#progressBar'));

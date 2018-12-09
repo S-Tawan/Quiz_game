@@ -1,6 +1,9 @@
 <?php
     require 'server.php';
-    $_SESSION['i'] = -1;
+    $_SESSION['name'] = "Singha_name";
+    $_SESSION['score'] = 0;
+    $_SESSION['counter'] = 0;
+    $_SESSION['correct'] = 0;
     $check = 'start';
     unset($_SESSION['question']);
     if ($_GET != null) {
@@ -117,7 +120,7 @@
                         <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
                             <p></p><span>rate : </span>
                             <p></p>
-                            <!-- <form method = "POST" action = "play.php?id=<?php echo $q_id ?>"> -->
+                            <!-- <form method = "POST" action = "play.php?q_id=<?php echo $q_id ?>"> -->
                             <a href="play.php?id=<?php echo $q_id ?>">
                             <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
                             </a>
