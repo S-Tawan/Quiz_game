@@ -1,6 +1,6 @@
 <?php
     require 'server.php';
-    $_SESSION['i'] = 0;
+    $_SESSION['i'] = -1;
     $check = 'start';
     unset($_SESSION['question']);
     if ($_GET != null) {
