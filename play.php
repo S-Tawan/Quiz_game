@@ -3,10 +3,7 @@
   if ($_GET != null) {
     $_SESSION['quiz'] =  $_GET['id'];
   }
-    for($i=0;$i<count($_SESSION['question']);$i++){
-        // echo $_SESSION['question'][$i].'<br>';
-        
-    }
+  $name = $_SESSION['name'];
     if(isset($_POST['options'])){
 
         $check = $_POST['options'];

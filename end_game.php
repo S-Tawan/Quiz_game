@@ -32,7 +32,7 @@
     $re_rank = mysqli_query($con, $q_rank);
     $row_rank = mysqli_fetch_assoc($re_rank);
 
-    $q_TOP = "SELECT * FROM `score`  ORDER BY score_point DESC LIMIT 10";
+    $q_TOP = "SELECT * FROM `score`  ORDER BY score_point DESC LIMIT 5";
     $re_TOP = mysqli_query($con, $q_TOP);
 
 
