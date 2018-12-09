@@ -15,6 +15,16 @@ h1{
     font-weight: bolder;
 }
 
+#tab-endgame{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+th,td{
+    border-style: solid;
+    border-width: 7px;
+}
+
 nav{
     /* border-radius: 0%; */
 }

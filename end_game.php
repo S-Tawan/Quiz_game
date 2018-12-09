@@ -61,19 +61,70 @@
         </div>
     </nav>
 
-    <p>End Game</p>
+    <p style="text-align:center;font-size: 100px;font-weight: bolder;">End Game</p>
     <div class="row">
         <div class="col-md-6">
-            <div class="container-fluid" id="con-endgame" style="background-color:red;">
-                <p style="color:#03FF80">Score</p>
-                <p><?php echo $sc ?></p>
+            <div class="container-fluid" id="con-endgame">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p style="color:#03FF80">Total</p>
+                        <p>1/10</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p style="color:#03FF80">Score</p>
+                        <p>100</p>
+                    </div>
+                </div>
                 <p style="color:#EBFF01">Rank</p>
                 <p>#1</p>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="container-fluid" id="con-endgame" style="background-color:blue;">
-                <p>#Top 10</p>
+            <div class="container-fluid" id="con-endgame">
+                <p>#Top 5</p>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                    <div class="table-responsive" id="tab-endgame">          
+                        <table class="table table-bordered" style="border-width:7px;">
+                            <thead style="border-width:7px;">
+                            <tr>
+                                <th style="border-width:7px;text-align:center">Rank</th>
+                                <th style="border-width:7px;text-align:center">Name</th>
+                                <th style="border-width:7px;text-align:center">Score</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr>
+                                <td>#1</td>
+                                <td>Anna</td>
+                                <td>Pitt</td>
+                            </tr>
+                            <tr>
+                                <td>#1</td>
+                                <td>Anna</td>
+                                <td>Pitt</td>
+                            </tr>
+                            <tr>
+                                <td>#1</td>
+                                <td>Anna</td>
+                                <td>Pitt</td>
+                            </tr>
+                            <tr>
+                                <td>#1</td>
+                                <td>Anna</td>
+                                <td>Pitt</td>
+                            </tr>
+                            <tr>
+                                <td>#1</td>
+                                <td>Anna</td>
+                                <td>Pitt</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
             </div>
         </div>
     </div>
