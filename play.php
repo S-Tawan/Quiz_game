@@ -52,6 +52,12 @@ $time = $row_ques['question_time'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
     <style>
         #progressBar {
             width: 90%;
@@ -97,7 +103,10 @@ $time = $row_ques['question_time'];
 
     <title>QuizSiJa</title>
 </head>
-<body style="background-color:#252525">
+<body>
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+    </nav>
     <div class="row">
         <div class="col-lg-1" ></div>
         <div class="col-lg-10">
@@ -151,7 +160,7 @@ $time = $row_ques['question_time'];
                     <input type="hidden" name="time" value="Content of the extra variable" >
                 </div>
             </form>
-        </div>
+        </div><input type="text" name="" id="">
         <div class="col-lg-1" ></div>
     </div>
   

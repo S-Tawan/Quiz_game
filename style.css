@@ -2,14 +2,21 @@ body{
     background-color: #252525;
     font-family: 'Courier New', Courier, monospace;   
 }
+
 h1{
     text-align: center;
-    color: red;
     /* font-family: 'Courier New', Courier, monospace;    */
 }
 
+#con-endgame{
+    height: 600px;
+    text-align: center;
+    font-size: 100px;
+    font-weight: bolder;
+}
+
 nav{
-    border-radius: 0%;
+    /* border-radius: 0%; */
 }
 
 .wrap{
@@ -84,4 +91,4 @@ input[type=text]{
   }
   
   /* Do not take in account */
-html{padding-top:0px}a.solink{position:fixed;top:0;width:100%;text-align:center;background:#f3f5f6;color:#cfd6d9;border:1px solid #cfd6d9;line-height:30px;text-decoration:none;transition:all .3s;z-index:999}a.solink::first-letter{text-transform:capitalize}a.solink:hover{color:#428bca}
+  a.solink{position:fixed;top:0;width:100%;text-align:center;background:#f3f5f6;color:#cfd6d9;border:1px solid #cfd6d9;line-height:30px;text-decoration:none;transition:all .3s;z-index:999}a.solink::first-letter{text-transform:capitalize}a.solink:hover{color:#428bca}
