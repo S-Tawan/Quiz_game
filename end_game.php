@@ -124,6 +124,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <a class="btn btn-success" id="bt-endgame">Retry</a>
                     <div class="col-md-1"></div>
                 </div>
             </div>
