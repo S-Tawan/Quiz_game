@@ -1,10 +1,13 @@
 <?php
-    if(isset($_POST['q_a'])){
-        $q_s = $_POST['q_a'];
-        echo $q_s;  
-    }
-?>
+  require 'server.php';
+for($i=0;$i<count($_SESSION['question']);$i++){
+    echo $_SESSION['question'][$i].'<br>';
+    
+}
+echo $_SESSION['eiei'];
 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
