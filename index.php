@@ -1,9 +1,10 @@
 <?php
     require 'server.php';
-    $_SESSION['name'] = "Singha_name";
+    $_SESSION['name'] = "Singha_".getToken(6);
     $_SESSION['score'] = 0;
     $_SESSION['counter'] = 0;
     $_SESSION['correct'] = 0;
+    $_SESSION['upscore'] = 0;
     $check = 'start';
     unset($_SESSION['question']);
     if ($_GET != null) {
@@ -38,14 +39,11 @@
     function getToken($length){
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-     
         $codeAlphabet .= "0123456789";
         $max = strlen($codeAlphabet); // edited
-   
        for ($i=0; $i < $length; $i++) {
            $token .= $codeAlphabet[random_int(0, $max-1)];
        }
-   
        return $token;
    }
    

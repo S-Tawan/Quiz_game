@@ -1,8 +1,32 @@
 <?php
     require 'server.php';
-    echo $_SESSION['score'].'<br>';
-    echo $_SESSION['correct'].'/'.count($_SESSION['question']);
-    echo "<br>". $_SESSION['quiz'];
+   $sc =  $_SESSION['score'];
+   $cr =  $_SESSION['correct'].'/'.count($_SESSION['question']);
+   $qz =  $_SESSION['quiz'];
+   $name = $_SESSION['name'];
+
+
+
+   function getToken($length){
+    $token = "";
+    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $codeAlphabet .= "0123456789";
+    $max = strlen($codeAlphabet); // edited
+   for ($i=0; $i < $length; $i++) {
+       $token .= $codeAlphabet[random_int(0, $max-1)];
+   }
+   return $token;
+}
+    if($_SESSION['upscore'] == 0){
+    $score_id = 'sc_'.getToken(6);
+    $q_sc = " INSERT INTO `score`(`score_id`, `score_point`, `user_name`, `quiz_id`) VALUES ('$score_id','$sc','$name','$qz')";
+    $re_sc = mysqli_query($con, $q_sc);
+
+    if($re_sc){
+        $_SESSION['upscore']++;
+    }
+    }
+//    INSERT INTO `score`(`score_id`, `score_point`, `user_name`, `quiz_id`) VALUES (,[value-2],[value-3],[value-4])
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +53,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" href="index.php">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>KiminoNawa</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $name ?></a></li>
             </ul>
         </div>
     </nav>
@@ -42,7 +66,7 @@
         <div class="col-md-6">
             <div class="container-fluid" id="con-endgame" style="background-color:red;">
                 <p style="color:#03FF80">Score</p>
-                <p>100</p>
+                <p><?php echo $sc ?></p>
                 <p style="color:#EBFF01">Rank</p>
                 <p>#1</p>
             </div>
