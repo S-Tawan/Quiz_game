@@ -1,10 +1,10 @@
 <?php
-  require 'server.php';
-for($i=0;$i<count($_SESSION['question']);$i++){
-    echo $_SESSION['question'][$i].'<br>';
+//   require 'server.php';
+// for($i=0;$i<count($_SESSION['question']);$i++){
+//     echo $_SESSION['question'][$i].'<br>';
     
-}
-echo $_SESSION['eiei'];
+// }
+// echo $_SESSION['i'];
 
 
 ?>
@@ -31,6 +31,10 @@ echo $_SESSION['eiei'];
             background-color: #CBEA00;
             box-sizing: border-box;
         }
+        .ice{
+            background-color:red;
+        }
+        
     </style>
     <?php
         require 'link_title.php';
@@ -62,14 +66,14 @@ echo $_SESSION['eiei'];
             </div>
             <!-- question answer -->
             <form action="#" method="POST">
-                <div class="btn-group btn-group-justified" data-toggle="buttons" style="background-color:white;height:200px;margin-top:10px;">
-                    <label class="btn btn-secondary" >
+                <div class="btn-group btn-group-justified" data-toggle="buttons" style="height:200px;margin-top:10px;">
+                    <label class="btn btn-success" id="ice">
                         <input type="radio" name="options" id="option1" autocomplete="off"> Active
                     </label>
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-success">
                         <input type="radio" name="options" id="option2" autocomplete="off"> Radio
                     </label>
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-success">
                         <input type="radio" name="options" id="option3" autocomplete="off"> Radio
                     </label>
                 </div>
@@ -81,5 +85,6 @@ echo $_SESSION['eiei'];
         <div class="col-lg-1" ></div>
     </div>
     <script src="script.js"></script>
+    header('Location: ');
 </body>
 </html>

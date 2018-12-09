@@ -34,7 +34,7 @@ nav{
 }
 
 .container{
-    padding: 2px 16px;
+    /* padding: 2px 16px; */
 }
 
 input[type=text]{
@@ -45,7 +45,7 @@ input[type=text]{
 
 ::placeholder{
     color: deepskyblue;
-    opacity: 1
+    opacity: 1;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
