@@ -1,46 +1,46 @@
 <?php
-  require 'server.php';
-  if ($_GET != null) {
-    $_SESSION['quiz'] =  $_GET['id'];
-  }
-for($i=0;$i<count($_SESSION['question']);$i++){
-    echo $_SESSION['question'][$i].'<br>';
+//   require 'server.php';
+//   if ($_GET != null) {
+//     $_SESSION['quiz'] =  $_GET['id'];
+//   }
+// for($i=0;$i<count($_SESSION['question']);$i++){
+//     echo $_SESSION['question'][$i].'<br>';
     
-}
-if(isset($_POST['options'])){
+// }
+// if(isset($_POST['options'])){
 
-    $check = $_POST['options'];
-    $count_time = $_POST['time'];
-    echo $count_time;
-    $q_check = "SELECT `answers_id` FROM `answers` WHERE  `answers_id`= '$check' && `answer_correct` = '1'";
-    $re_check = mysqli_query($con, $q_check);
-    if($row_check = mysqli_fetch_assoc($re_check)){
-        $_SESSION['score'] = $_SESSION['score'] +($count_time*100);
-        $_SESSION['correct']++;
+//     $check = $_POST['options'];
+//     $count_time = $_POST['time'];
+//     echo $count_time;
+//     $q_check = "SELECT `answers_id` FROM `answers` WHERE  `answers_id`= '$check' && `answer_correct` = '1'";
+//     $re_check = mysqli_query($con, $q_check);
+//     if($row_check = mysqli_fetch_assoc($re_check)){
+//         $_SESSION['score'] = $_SESSION['score'] +($count_time*100);
+//         $_SESSION['correct']++;
 
-        echo "<br>ถูกต้อง<br>" ;
+//         echo "<br>ถูกต้อง<br>" ;
         
-    }
+//     }
   
 
-     $i = ++$_SESSION['counter'] ; 
-   if($i>count($_SESSION['question'])-1){
-       echo "<br>เกิน!!!!!!<br>";
-       header('Location: end_game.php');
-   }
+//      $i = ++$_SESSION['counter'] ; 
+//    if($i>count($_SESSION['question'])-1){
+//        echo "<br>เกิน!!!!!!<br>";
+//        header('Location: end_game.php');
+//    }
    
-  echo $_SESSION['score'];
-}
+//   echo $_SESSION['score'];
+// }
 
-$i = $_SESSION['counter'];
-echo $i;
-$now_q = $_SESSION['question'][$i];
-$q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
-$re_ans = mysqli_query($con, $q_ans);
-$q_ques = "SELECT `question_name`,`question_time`,`question_img` FROM `question` WHERE `question_id` ='$now_q' ";
-$re_ques = mysqli_query($con, $q_ques);
-$row_ques = mysqli_fetch_assoc($re_ques);
-$time = $row_ques['question_time'];
+// $i = $_SESSION['counter'];
+// echo $i;
+// $now_q = $_SESSION['question'][$i];
+// $q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
+// $re_ans = mysqli_query($con, $q_ans);
+// $q_ques = "SELECT `question_name`,`question_time`,`question_img` FROM `question` WHERE `question_id` ='$now_q' ";
+// $re_ques = mysqli_query($con, $q_ques);
+// $row_ques = mysqli_fetch_assoc($re_ques);
+// $time = $row_ques['question_time'];
 
 
 // เพิ่มข้อมูล
@@ -96,9 +96,6 @@ $time = $row_ques['question_time'];
 
 
   </script>
-    <?php
-        require 'link_title.php';
-    ?>
     
 
     <title>QuizSiJa</title>
