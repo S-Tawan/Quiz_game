@@ -64,7 +64,7 @@
     $detail = $_POST['q_detail'];
 
     $q_id = 'qz_'.getToken(6);
-    $q_qz = "INSERT INTO `quiz`(`quiz_id`, `quiz_name`, `quiz_img`, `count_play`, `quiz_rate`, `quiz_detail`, `quiz_creator`) VALUES ($q_id,$q_name,$img,0,0,$detail,$name)";
+    $q_qz = "INSERT INTO `quiz`(`quiz_id`, `quiz_name`, `quiz_img`, `count_play`, `quiz_rate`, `quiz_detail`, `quiz_creator`) VALUES ('$q_id','$q_name','$img','0','0','$detail','$name')";
     $re_qz = mysqli_query($con, $q_qz);
 
     if($re_qz){
@@ -77,7 +77,7 @@
 
     }
   
-//    header('Location:main.php');
+   header('Location:main.php');
 }
    
 
