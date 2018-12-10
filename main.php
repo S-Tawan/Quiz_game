@@ -45,7 +45,7 @@
                     <header class="w3-container w3-teal"> 
                         <span onclick="document.getElementById('id01').style.display='none'" 
                         class="w3-button w3-display-topright">&times;</span>
-                        <h2>Create New Quiz</h2>
+                        <h2>New Quiz</h2>
                     </header>
                     <div class="w3-container" id="stm">
                         <p>Quiz Name : </p>
@@ -53,12 +53,12 @@
                         <p>Title Miage : </p>
                         <input class="w3-input w3-border w3-round" type="file">
                         <p>Detail Quiz : </p>
-                        <textarea name="quiz-detail" id="" cols="30" rows="10"></textarea>
+                        <textarea name="quiz-detail" id="" cols="35" rows="5"></textarea>
                     </div>
                     <footer class="w3-container w3-teal">
                         <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
                         <div class="w3-panel" style="width:100%">
-                            <button class="w3-button w3-block w3-teal">Button</button>
+                            <button class="w3-button w3-block w3-teal">Create</button>
                         </div>
                     </footer>
                 </div>
