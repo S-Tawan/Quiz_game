@@ -65,7 +65,7 @@
 </head>
 <body>
     <!-- navbar sija -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse"  style = "background-color:#231C00">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">HOME</a>
@@ -76,7 +76,7 @@
             </ul>
         </div>
     </nav>
-
+    <div id = 'box' ></div>
     <!-- Card -->
     <!-- <div class="wrap">
         <div class="card">
@@ -89,36 +89,47 @@
     </div> -->
 
         <!-- background -->
-        <img src="image\BackGround quizSija.png" style="width:100%;margin-top:-110px">
+        <!-- <img src="image\BackGround quizSija.png" style="width:100%;margin-top:-110px"> -->
+        <div style = "text-align: center;">
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg1"><strong>Q</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg2"><strong>u</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg3"><strong>i</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg4"><strong>z</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg5"><strong>S</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg6"><strong>i</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg7"><strong>J</strong></span>
+            <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg8"><strong>a</strong></span>
+
+        </div>
 
         <!-- Modal -->
         <div class="modal" tabindex="-1" role="dialog" id="createName" style="font-family:'Courier New', Courier, monospace;">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="background-color:#6665FF">
             <!-- header -->
-            <div class="modal-header" style="background-color:#E7B818">
+            <div class="modal-header"style="border-color:#6665FF">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="row">
-                        <div class="col-lg-8" ><h2><strong><?php echo $q_name ?></strong></h2></div>
-                        <div class="col-lg-4" ><h5>Create by : <?php echo $q_creator ?></h5></div>
+                        <div class="col-lg-8" style="color:whitesmoke" ><h2><strong><?php echo $q_name ?></strong></h2></div>
+                        <div class="col-lg-4" style="color:whitesmoke" ><h5>Create by : <?php echo $q_creator ?></h5></div>
                     </div>
             </div>
             <!-- body -->
-            <div class="modal-body" >
+            <div class="modal-body" style="background-color:#5B6770" >
                 <center>
-                    <div class="container-fluid" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                    <div class="container-fluid" style="border-color:#6A9955;border-style:solid;border-radius:5px">
                         <img src="image\tmp_test_img.png" alt="" sizes="width:100px;height:100px" srcset="">
                     </div>
                 </center>
-                <p></p>
+                <p></p> 
                 <div class="container-fluid">
                     <div class="row">
                         <span class="fluid">
-                        <div class="col-sm-7" style="border-color:#4d4d4d;border-style:solid;border-radius:5px"><p></p><p>Detail :<br><?php echo $q_detail ?></p></div>
+                        <div class="col-sm-7" style="border-color:#6A9955;border-style:solid;border-radius:5px;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:18px;"><p></p><p>Detail :<br><?php echo $q_detail ?></p></div>
                         <div class="col-sm-1"></div>
-                        <div class="col-sm-4" style="border-color:#4d4d4d;border-style:solid;border-radius:5px">
+                        <div class="col-sm-4" style="border-color:#6A9955;border-style:solid;border-radius:5px;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:18px;">
                             <p></p><span>rate : </span>
                             <p></p>
                             <!-- <form method = "POST" action = "play.php?q_id=<?php echo $q_id ?>"> -->
@@ -133,7 +144,7 @@
                 </div>
             </div>
             <!-- footer -->
-            <div class="modal-footer" style="background-color:#E7B818"></div>
+            <div class="modal-footer" style="background-color:#6665FF;border-color:#6665FF"></div>
             </div>
         </div>
     </div>
@@ -169,7 +180,7 @@
                                 
                             }
                         } 
-                        echo getToken(6);
+                        // echo getToken(6);
                         ?>
                             
                       
@@ -184,3 +195,36 @@
 
 </body>
 </html>
+
+<script>
+
+     
+randomfontcolor('bg1');
+randomfontcolor('bg2');
+randomfontcolor('bg3');
+randomfontcolor('bg4');
+randomfontcolor('bg5');
+randomfontcolor('bg6');
+randomfontcolor('bg7');
+randomfontcolor('bg8');
+
+function randomfontcolor (eiei){
+
+var random = document.getElementById(eiei);
+random.style.color = getRandomColor();
+
+setTimeout(function(){
+  randomfontcolor (eiei);
+}, 100);
+};
+
+
+function getRandomColor() {
+var letters = '0123456789ABCDEF';
+var color = '#';
+for (var i = 0; i < 6; i++) {
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+</script>

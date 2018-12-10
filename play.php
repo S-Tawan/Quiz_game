@@ -89,6 +89,7 @@
         document.Myform.time.value = timeleft;
         
     }
+    
 };
 
 
@@ -109,14 +110,15 @@
             </ul>
         </div>
     </nav>
-
+    <div id="progressBar">
+                <div class="bar"></div>
+            </div>
     <div class="row">
+        
         <div class="col-lg-1" ></div>
         <div class="col-lg-10">
             <!-- progress bar -->
-            <div id="progressBar">
-                <div class="bar"></div>
-            </div>
+           
             <!-- <form action="play.php" method="GET">
                 <div class="btn-group btn-group-justified" name="q_a">
                     <a href="#" class="btn btn-primary" value="apple">Apple</a>
@@ -127,37 +129,75 @@
 
             <!-- question -->
             <div class="row">
+                <?php if ($row_ques['question_img']!=NULL) {?>
                 <div class="col-lg-6" name="pic_quiz">
-                    <div class="container-fluid" style="background-color:red;width:auto;height:400px;">
-                    <div class="container-fluid" style="text-align: center" >
+                    <div class="container-fluid" style="background-color:;width:auto;height:400px;">
+                        <div class="container-fluid" style="text-align: center" >
                         <img src="image/<?php echo $row_ques['question_img'] ?>" alt="" style="width:auto;margin-top:10px;height:380px;text-align: center;"  >
-                    </div>
+                         </div>
 
                 
+                     </div>
                 </div>
-            </div>
                 <div class="col-lg-6" name="text_quiz">
-                    <div class="container-fluid" style="background-color:green;width:auto;height:400px; font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:50px; ">
-                    <div class="container-fluid">
-                    <?php echo $row_ques['question_name'] ?>
-                    </div>
+                    <div class="container-fluid" style="background-color:;width:auto;height:400px; font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:50px; ">
+                        <div class="container-fluid">
+                            <?php echo $row_ques['question_name'] ?>
+                        </div>
                       
                     </div>
                 </div>
+                <?php }
+                else {
+                ?>
+                     <div class="col-lg-12" name="text_quiz">
+                    <div class="container-fluid" style="background-color:;width:auto;height:400px; font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:50px; ">
+                        <div class="container-fluid">
+                            <?php echo $row_ques['question_name'] ?>
+                        </div>
+                      
+                    </div>
+                </div>
+                <?php } ?>
+                
             </div>
             <!-- question answer -->
             <form action="play.php" method="POST" name = 'Myform'>
                 <div class="btn-group btn-group-justified" data-toggle="buttons" style="background-color:white;height:200px;margin-top:10px;" required >
                 <?php
-                while($row_ans = mysqli_fetch_assoc($re_ans)){
-                ?>
-                    <label class="btn btn-secondary" style ="background-color:black;">
+                $i = 0;
+                while($row_ans = mysqli_fetch_assoc($re_ans)){?>
+                <?php if($i%5 == 0 ){  ?>
+                    <label class="btn btn-secondary" style ="background-color:#2F6DAE;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;  ">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
-                   
-                <?php } ?>
-                </div>
-                <div style="margin-top:20px;">
+               <?php } ?>
+               <?php if($i%5 == 1 ){  ?>
+                    <label class="btn btn-secondary" style ="background-color:#2C9CA6;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                        <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
+                    </label>
+               <?php } ?>
+               <?php if($i%5 == 2 ){  ?>
+                    <label class="btn btn-secondary" style ="background-color:#ECA82C;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                        <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
+                    </label>
+               <?php } ?>
+               <?php if($i%5 == 3 ){  ?>
+                    <label class="btn btn-secondary" style ="background-color:#D4546A;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                        <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
+                    </label>
+               <?php } ?>
+               <?php if($i%5 == 4 ){  ?>
+                    <label class="btn btn-secondary" style ="background-color:#8B3186;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                        <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
+                    </label>
+               <?php } ?>
+               
+                <?php 
+            $i++;
+            } ?>
+                </div>#8B3186
+                <div style="margin-top:50px;">
                     <button class="btn btn-success btn-block" style="padding:20px;" type="submit">Submit&Pass</button>
                     <br>
                     <input type="hidden" name="time" value="Content of the extra variable" >

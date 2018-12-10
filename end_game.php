@@ -32,7 +32,7 @@
     $re_rank = mysqli_query($con, $q_rank);
     $row_rank = mysqli_fetch_assoc($re_rank);
 
-    $q_TOP = "SELECT * FROM `score`  ORDER BY score_point DESC LIMIT 5";
+    $q_TOP = "SELECT * FROM `score` WHERE `quiz_id` = '$qz' ORDER BY score_point DESC LIMIT 5";
     $re_TOP = mysqli_query($con, $q_TOP);
 
 
@@ -56,7 +56,7 @@
 
     
 
-    <title>End game</title>
+    <title >End game</title>
 </head>
 <body>
     <!-- navbar -->
@@ -71,27 +71,27 @@
         </div>
     </nav>
 
-    <p style="text-align:center;font-size: 100px;font-weight: bolder;">End Game</p>
+    <p style="text-align:center;font-size: 100px;font-weight: bolder;" id  = "random1">End Game</p>
     <div class="row">
         <div class="col-md-6">
             <div class="container-fluid" id="con-endgame">
                 <div class="row">
                     <div class="col-md-6">
-                        <p style="color:#03FF80">Total</p>
+                        <p  id  = "random2">Total</p>
                         <p><?php echo $cr ; ?></p>
                     </div>
                     <div class="col-md-6">
-                        <p style="color:#03FF80">Score</p>
+                        <p  id  = "random3">Score</p>
                         <p><?php echo $sc ; ?></p>
                     </div>
                 </div>
-                <p style="color:#EBFF01">Rank</p>
+                <p style="color:#EBFF01" id  = "random4">Rank </p>
                 <p><?php echo '#'.$row_rank['mycount'] ; ?></p>
             </div>
         </div>
         <div class="col-md-6">
             <div class="container-fluid" id="con-endgame">
-                <p>#Top 5</p>
+                <p id  = "random5">#Top 5</p>
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
@@ -123,7 +123,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a class="btn btn-success" id="bt-endgame">Retry</a>
+                    <a class="btn btn-success" id="bt-endgame" href = 'index.php?s_text=<?php echo $qz ?>'>Retry</a>
                     <div class="col-md-1"></div>
                 </div>
             </div>
@@ -132,3 +132,32 @@
 
 </body>
 </html>
+<script>
+
+     
+      randomfontcolor('random1');
+      randomfontcolor('random2');
+      randomfontcolor('random3');
+      randomfontcolor('random4');
+      randomfontcolor('random5');
+
+function randomfontcolor (eiei){
+
+    var random = document.getElementById(eiei);
+    random.style.color = getRandomColor();
+    
+    setTimeout(function(){
+        randomfontcolor (eiei);
+    }, 100);
+};
+
+
+function getRandomColor() {
+var letters = '0123456789ABCDEF';
+var color = '#';
+for (var i = 0; i < 6; i++) {
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+</script>
