@@ -63,11 +63,11 @@
                 </div>
 
                 <!-- script card -->
-                <div id="quiz" class="w3-container city1 w3-animate-opacity" style="display:block">
+                <a href="http://www.google.com" style="text-decoration: none;"><div id="quiz" class="w3-container city1 w3-animate-opacity" style="display:block">
                     <h2>DC Universe</h2>
                     <img src="image\tmp_test_img.png" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
                     <p>คำถามเกี่ยวกับจักรวาร DC.</p>
-                </div>
+                </div></a>
 
                 <div id="view" class="w3-container city1 w3-animate-opacity" style="display:none">
                     <h2>Plays</h2>
