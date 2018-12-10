@@ -1,6 +1,7 @@
 <?php
     require 'server.php';
     $name = $_SESSION['name'];
+    //error
     if(isset($_SESSION['error'])){
         if($_SESSION['error']==1){ //ไม่สำเร็จ
             echo "ไม่สำเร็จ";
@@ -9,6 +10,7 @@
         }
         unset($_SESSION['error']);
     }
+    //random
     function getToken($length){
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -20,7 +22,7 @@
        return $token;
    }
 
-
+   //insert
     if(isset($_POST['q_name'])){
  
    $ext = pathinfo(basename($_FILES["q_img"]["name"]), PATHINFO_EXTENSION);
@@ -79,7 +81,11 @@
   
    header('Location:main.php');
 }
-   
+//end of insert
+$q_quiz = "SELECT * FROM `quiz` WHERE `quiz_creator` = '$name'";   
+$re_quiz = mysqli_query($con, $q_quiz);
+
+
 
 
 ?>
@@ -120,83 +126,68 @@
         <div class="col-md-10">
 
             <!-- card all -->
+            <?php while($row_quiz = mysqli_fetch_assoc($re_quiz)) { 
+                $quiz_id = $row_quiz['quiz_id'];
+                 $q_TOP = "SELECT * FROM `score` WHERE `quiz_id` = '$quiz_id' ORDER BY score_point DESC LIMIT 1";
+                 $re_TOP = mysqli_query($con, $q_TOP);
+                 $row_TOP = mysqli_fetch_assoc($re_TOP);
+                 $score =  $row_TOP['score_point'];
+                
+            ?>
             <div class="w3-card-4" id="card">
                 <div class="container-fluid" >
                     <div class="w3-row ">
-                        <a href="javascript:void(0)" onclick="openCity(event, 'quiz','city1','tablink1');">
-                        <div class="w3-third tablink1 w3-bottombar w3-hover-light-grey w3-padding ">Quiz</div>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'quiz_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');">
+                        <div class="w3-third tab_<?php echo $row_quiz['quiz_id'] ?> w3-bottombar w3-hover-light-grey w3-padding ">Quiz</div>
                         </a>
-                        <a href="javascript:void(0)" onclick="openCity(event, 'view','city1','tablink1');">
-                        <div class="w3-third tablink1 w3-bottombar w3-hover-light-grey w3-padding">Views</div>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'view_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');">
+                        <div class="w3-third tab_<?php echo $row_quiz['quiz_id'] ?> w3-bottombar w3-hover-light-grey w3-padding">Views</div>
                         </a>
-                        <a href="javascript:void(0)" onclick="openCity(event, 'option','city1','tablink1');">
-                        <div class="w3-third tablink1 w3-bottombar w3-hover-light-grey w3-padding">Option</div>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'option_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');">
+                        <div class="w3-third tab_<?php echo $row_quiz['quiz_id'] ?> w3-bottombar w3-hover-light-grey w3-padding">Option</div>
                         </a>
                     </div>
                 </div>
 
                 <!-- script card -->
-                <a href="http://www.google.com" style="text-decoration: none;"><div id="quiz" class="w3-container city1 w3-animate-opacity" style="display:block">
-                    <h2>DC Universe</h2>
-                    <img src="image\tmp_test_img.png" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
-                    <p>คำถามเกี่ยวกับจักรวาร DC.</p>
+                <a href="http://www.google.com" style="text-decoration: none;"><div id="quiz_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:block">
+                    <h2><?php echo $row_quiz['quiz_name'] ?></h2>
+                    <img src="Quiz_image\<?php echo $row_quiz['quiz_img'] ?>" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
+                    <p><?php echo $row_quiz['quiz_detail'] ?></p>
                 </div></a>
 
-                <div id="view" class="w3-container city1 w3-animate-opacity" style="display:none">
+                <div id="view_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none">
                     <h2>Plays</h2>
-                    <p>27 rounds</p>
+                    <p><?php echo $row_quiz['count_play'] ?></p>
                     <h2>Rate</h2>
-                    <p>10/10</p>
+                    <p><?php echo $row_quiz['quiz_rate'] ?></p>
                     <h2>Top Score</h2>
-                    <p>3500 points</p>
+                    <p><?php
+                    if($score!=NULL){
+                      echo $score ;  
+                    }
+                    else{
+                        echo "-----";
+                    }
+                     
+                     
+
+                     ?></p>
                 </div>
 
-                <div id="option" class="w3-container city1 w3-animate-opacity" style="display:none;margin-top:50px;">
-                    <button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
-                    <button class="w3-button w3-block w3-round-large w3-large w3-red">Delete</button>
-                </div>
-            </div>
-            <!-- card end -->
-
-            <div class="w3-card-4" id="card">
-                <div class="container-fluid" >
-                    <div class="w3-row">
-                        <a href="javascript:void(0)" onclick="openCity(event, 'quiz2','city2','tablink2');">
-                        <div class="w3-third tablink2 w3-bottombar w3-hover-light-grey w3-padding">Quiz</div>
-                        </a>
-                        <a href="javascript:void(0)" onclick="openCity(event, 'view2','city2','tablink2');">
-                        <div class="w3-third tablink2 w3-bottombar w3-hover-light-grey w3-padding">Views</div>
-                        </a>
-                        <a href="javascript:void(0)" onclick="openCity(event, 'option2','city2','tablink2');">
-                        <div class="w3-third tablink2 w3-bottombar w3-hover-light-grey w3-padding">Option</div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- script card -->
-                <div id="quiz2" class="w3-container city2 w3-animate-opacity" style="display:block">
-                    <h2>AC Universe</h2>
-                    <img src="image\tmp_test_img.png" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
-                    <p>คำถามเกี่ยวกับจักรวาร DC.</p>
-                </div>
-
-                <div id="view2" class="w3-container city2 w3-animate-opacity" style="display:none">
-                    <h2>Plays</h2>
-                    <p>27 rounds</p>
-                    <h2>Rate</h2>
-                    <p>10/10</p>
-                    <h2>Top Score</h2>
-                    <p>3500 points</p>
-                </div>
-
-                <div id="option2" class="w3-container city2 w3-animate-opacity" style="display:none;margin-top:50px;">
-                    <button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
+                <div id="option_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none;margin-top:50px;">
+                    
+                   <a> <button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
                     <button class="w3-button w3-block w3-round-large w3-large w3-red">Delete</button>
                 </div>
                 <script>
-                    openCity(event, 'quiz2','city2','tablink2');
+                    openCity(event, 'quiz_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');
                 </script>
             </div>
+            <?php } ?>
+            <!-- card end -->
+
+           
             
             <!-- button new quiz -->
             <button  class="w3-button w3-xlarge w3-circle" onclick="document.getElementById('id01').style.display='block'" id="ghost-btn-cir">+</button>
@@ -247,7 +238,7 @@
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.firstElementChild.className += " w3-border-red";
         }
-        openCity(event, 'quiz','city1','tablink1');
+      
 
 
     </script>

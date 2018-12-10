@@ -1,6 +1,7 @@
 <?php
     require 'server.php';
-    $_SESSION['name'] = "Singha_".getToken(6);
+    // $_SESSION['name'] = "Singha_".getToken(6);
+    $_SESSION['name'] = "Singha";
     $_SESSION['score'] = 0;
     $_SESSION['counter'] = 0;
     $_SESSION['correct'] = 0;
