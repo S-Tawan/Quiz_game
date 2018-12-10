@@ -1,12 +1,67 @@
 <?php
     require 'server.php';
     $name = $_SESSION['name'];
-    if(isset($_POST['q_name'])){
-        echo "eiei";
+    if( $_SESSION['error'] == 1){
+
+//ใส่ตรงนี้นะะะะะะะะะ
+
+
+        unset($_SESSION['error']);
     }
 
 
 
+    if(isset($_POST['q_name'])){
+        $_POST['q_name'];
+        $_POST['q_img'];
+    
+
+
+   
+   $ext = pathinfo(basename($_FILES["q_img"]["name"]), PATHINFO_EXTENSION);
+   $new_taget_name = 'Quiz_image_' . uniqid() . "." . $ext;
+   $target_path = "Quiz_image/";
+   $upload_path = $target_path . $new_taget_name;
+   $uploadOk = 1;
+   
+   $imageFileType = strtolower(pathinfo($new_taget_name, PATHINFO_EXTENSION));
+   
+   if ($_FILES["banner"]["size"] > 8000000) {
+       echo "Sorry, your file is too large.";
+       $uploadOk = 0;
+   }
+   
+   // Allow certain file formats
+   if ($imageFileType != "jpg"&&$imageFileType != "png") {
+       echo "Sorry, only png,jpg files are allowed.";
+       $uploadOk = 0;
+   }
+   
+   // Check if $uploadOk is set to 0 by an error
+   if ($uploadOk == 0) {
+       echo "Sorry, your file was not uploaded.";
+   }
+   
+   else {
+       if (move_uploaded_file($_FILES["q_img"]["tmp_name"], $upload_path)) {
+           echo 'Move success.';
+       }else {
+            echo 'Move fail';
+            $_SESSION['error'] = 1;
+          
+       }
+   }
+   if(!isset($_SESSION['error'])){}
+   $banner = $_FILES["banner"]["name"];
+   $img = $new_taget_name;
+
+   $name = $_POST['q_name'];
+   $detail = $_POST['q_detail'];
+    }
+  
+//    header('Location:main.php');
+}
+   
 
 
 ?>
@@ -60,7 +115,7 @@
                         <h2>New Quiz</h2>
                     </header>
                     <div class="w3-container" id="stm">
-                        <form action="" method="post">
+                        <form action="main.php" method="post" enctype="multipart/form-data">
 
                           <p>Quiz Name : </p>
                         <input class="w3-input w3-border w3-round" type="text" name = "q_name">
