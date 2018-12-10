@@ -64,6 +64,13 @@ nav{
     margin-top: 140px;
 }
 
+#stm{
+    margin-top:10px;
+    margin-bottom:10px;
+    text-align:center;
+    font-size: 20px;
+}
+
 #card:hover,{
     box-shadow: 0 8px 16px rgb(20, 228, 65);
 }

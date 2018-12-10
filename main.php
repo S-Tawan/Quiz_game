@@ -37,9 +37,32 @@
                 <div class="container-fluid" >aa</div>
             </div>
             
-            <!-- insert quiz -->
-            <button  class="w3-button w3-xlarge w3-circle" id="ghost-btn-cir">+</button>
-            
+            <!-- button new quiz -->
+            <button  class="w3-button w3-xlarge w3-circle" onclick="document.getElementById('id01').style.display='block'" id="ghost-btn-cir">+</button>
+            <!-- mddal new quiz -->
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:500px;">
+                    <header class="w3-container w3-teal"> 
+                        <span onclick="document.getElementById('id01').style.display='none'" 
+                        class="w3-button w3-display-topright">&times;</span>
+                        <h2>Create New Quiz</h2>
+                    </header>
+                    <div class="w3-container" id="stm">
+                        <p>Quiz Name : </p>
+                        <input class="w3-input w3-border w3-round" type="text">
+                        <p>Title Miage : </p>
+                        <input class="w3-input w3-border w3-round" type="file">
+                        <p>Detail Quiz : </p>
+                        <textarea name="quiz-detail" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <footer class="w3-container w3-teal">
+                        <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
+                        <div class="w3-panel" style="width:100%">
+                            <button class="w3-button w3-block w3-teal">Button</button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
         </div>
         <div class="col-md-1"></div>
     </div>
