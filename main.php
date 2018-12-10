@@ -1,23 +1,28 @@
 <?php
     require 'server.php';
     $name = $_SESSION['name'];
-    if( $_SESSION['error'] == 1){
-
-//ใส่ตรงนี้นะะะะะะะะะ
-
-
+    if(isset($_SESSION['error'])){
+        if($_SESSION['error']==1){ //ไม่สำเร็จ
+            echo "ไม่สำเร็จ";
+        }else{//สำเร็จ
+            echo "สำเร็จ";
+        }
         unset($_SESSION['error']);
     }
-
+    function getToken($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet .= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+       for ($i=0; $i < $length; $i++) {
+           $token .= $codeAlphabet[random_int(0, $max-1)];
+       }
+       return $token;
+   }
 
 
     if(isset($_POST['q_name'])){
-        $_POST['q_name'];
-        $_POST['q_img'];
-    
-
-
-   
+ 
    $ext = pathinfo(basename($_FILES["q_img"]["name"]), PATHINFO_EXTENSION);
    $new_taget_name = 'Quiz_image_' . uniqid() . "." . $ext;
    $target_path = "Quiz_image/";
@@ -26,7 +31,7 @@
    
    $imageFileType = strtolower(pathinfo($new_taget_name, PATHINFO_EXTENSION));
    
-   if ($_FILES["banner"]["size"] > 8000000) {
+   if ($_FILES["q_img"]["size"] > 8000000) {
        echo "Sorry, your file is too large.";
        $uploadOk = 0;
    }
@@ -45,18 +50,31 @@
    else {
        if (move_uploaded_file($_FILES["q_img"]["tmp_name"], $upload_path)) {
            echo 'Move success.';
+           $_SESSION['error'] = 0 ;
        }else {
             echo 'Move fail';
             $_SESSION['error'] = 1;
           
        }
    }
-   if(!isset($_SESSION['error'])){}
-   $banner = $_FILES["banner"]["name"];
-   $img = $new_taget_name;
+   if($_SESSION['error']==0){
+    $q_img = $_FILES["q_img"]["name"];
+    $img = $new_taget_name;
+    $q_name = $_POST['q_name'];
+    $detail = $_POST['q_detail'];
 
-   $name = $_POST['q_name'];
-   $detail = $_POST['q_detail'];
+    $q_id = 'qz_'.getToken(6);
+    $q_qz = "INSERT INTO `quiz`(`quiz_id`, `quiz_name`, `quiz_img`, `count_play`, `quiz_rate`, `quiz_detail`, `quiz_creator`) VALUES ($q_id,$q_name,$img,0,0,$detail,$name)";
+    $re_qz = mysqli_query($con, $q_qz);
+
+    if($re_qz){
+        $_SESSION['error']=2;
+    }
+    else{
+        $_SESSION['error']=1;
+    }
+
+
     }
   
 //    header('Location:main.php');
@@ -230,6 +248,8 @@
             evt.currentTarget.firstElementChild.className += " w3-border-red";
         }
         openCity(event, 'quiz','city1','tablink1');
+
+
     </script>
 
 </body>
