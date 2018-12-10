@@ -7,6 +7,11 @@
             echo "ไม่สำเร็จ";
         }else{//สำเร็จ
             echo "สำเร็จ";
+            ?>
+                <script>
+                    swal("Good job!", "You clicked the button!", "success");
+                </script>
+            <?php
         }
         unset($_SESSION['error']);
     }
@@ -104,6 +109,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- W3CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style.css">
@@ -238,7 +244,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.firstElementChild.className += " w3-border-red";
         }
-      
+        swal("Good job!", "You clicked the button!", "success");
 
 
     </script>
