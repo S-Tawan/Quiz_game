@@ -122,7 +122,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
                 <a class="navbar-brand" href="index.php">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $name ?></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $name ?></a></li>
             </ul>
         </div>
     </nav>
@@ -156,7 +156,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
                 </div>
 
                 <!-- script card -->
-                <a href="http://www.google.com" style="text-decoration: none;"><div id="quiz_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:block">
+                <a href="question.php?id=<?php echo $row_quiz['quiz_id'] ?>" style="text-decoration: none;"><div id="quiz_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:block">
                     <h2><?php echo $row_quiz['quiz_name'] ?></h2>
                     <img src="Quiz_image\<?php echo $row_quiz['quiz_img'] ?>" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
                     <p><?php echo $row_quiz['quiz_detail'] ?></p>
@@ -183,7 +183,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
 
                 <div id="option_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none;margin-top:50px;">
                     
-                   <a> <button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
+                   <a><button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
                     <button class="w3-button w3-block w3-round-large w3-large w3-red">Delete</button>
                 </div>
                 <script>
