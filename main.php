@@ -33,8 +33,84 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
+
+            <!-- card all -->
             <div class="w3-card-4" id="card">
-                <div class="container-fluid" >aa</div>
+                <div class="container-fluid" >
+                    <div class="w3-row ">
+                        <a href="javascript:void(0)" onclick="openCity(event, 'quiz','city1','tablink1');">
+                        <div class="w3-third tablink1 w3-bottombar w3-hover-light-grey w3-padding ">Quiz</div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'view','city1','tablink1');">
+                        <div class="w3-third tablink1 w3-bottombar w3-hover-light-grey w3-padding">Views</div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'option','city1','tablink1');">
+                        <div class="w3-third tablink1 w3-bottombar w3-hover-light-grey w3-padding">Option</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- script card -->
+                <div id="quiz" class="w3-container city1 w3-animate-opacity" style="display:block">
+                    <h2>DC Universe</h2>
+                    <img src="image\tmp_test_img.png" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
+                    <p>คำถามเกี่ยวกับจักรวาร DC.</p>
+                </div>
+
+                <div id="view" class="w3-container city1 w3-animate-opacity" style="display:none">
+                    <h2>Plays</h2>
+                    <p>27 rounds</p>
+                    <h2>Rate</h2>
+                    <p>10/10</p>
+                    <h2>Top Score</h2>
+                    <p>3500 points</p>
+                </div>
+
+                <div id="option" class="w3-container city1 w3-animate-opacity" style="display:none;margin-top:50px;">
+                    <button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
+                    <button class="w3-button w3-block w3-round-large w3-large w3-red">Delete</button>
+                </div>
+            </div>
+            <!-- card end -->
+
+            <div class="w3-card-4" id="card">
+                <div class="container-fluid" >
+                    <div class="w3-row">
+                        <a href="javascript:void(0)" onclick="openCity(event, 'quiz2','city2','tablink2');">
+                        <div class="w3-third tablink2 w3-bottombar w3-hover-light-grey w3-padding">Quiz</div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'view2','city2','tablink2');">
+                        <div class="w3-third tablink2 w3-bottombar w3-hover-light-grey w3-padding">Views</div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openCity(event, 'option2','city2','tablink2');">
+                        <div class="w3-third tablink2 w3-bottombar w3-hover-light-grey w3-padding">Option</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- script card -->
+                <div id="quiz2" class="w3-container city2 w3-animate-opacity" style="display:block">
+                    <h2>AC Universe</h2>
+                    <img src="image\tmp_test_img.png" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
+                    <p>คำถามเกี่ยวกับจักรวาร DC.</p>
+                </div>
+
+                <div id="view2" class="w3-container city2 w3-animate-opacity" style="display:none">
+                    <h2>Plays</h2>
+                    <p>27 rounds</p>
+                    <h2>Rate</h2>
+                    <p>10/10</p>
+                    <h2>Top Score</h2>
+                    <p>3500 points</p>
+                </div>
+
+                <div id="option2" class="w3-container city2 w3-animate-opacity" style="display:none;margin-top:50px;">
+                    <button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
+                    <button class="w3-button w3-block w3-round-large w3-large w3-red">Delete</button>
+                </div>
+                <script>
+                    openCity(event, 'quiz2','city2','tablink2');
+                </script>
             </div>
             
             <!-- button new quiz -->
@@ -66,5 +142,23 @@
         </div>
         <div class="col-md-1"></div>
     </div>
+
+    <script>
+        function openCity(evt, cityName,city,tablink) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName(city);
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName(tablink);
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.firstElementChild.className += " w3-border-red";
+        }
+        openCity(event, 'quiz','city1','tablink1');
+    </script>
+
 </body>
 </html>
