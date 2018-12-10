@@ -1,6 +1,7 @@
 body{
     background-color: #252525;
     font-family: 'Courier New', Courier, monospace;   
+    color  : #757573;
 }
 
 h1{
@@ -78,7 +79,11 @@ nav{
 .container{
     /* padding: 2px 16px; */
 }
-
+#box {
+    color:blue;
+   
+   
+}
 input[type=text]{
     background-color: #252525;
     border-color: #F70ACA;
@@ -109,7 +114,7 @@ input[type=text]{
 }
 
 #progressBar {
-    width: 90%;
+    width: 120%;
     /* margin: 10px auto; */
     height: 22px;
     background-color: #0A5F44;
