@@ -196,7 +196,7 @@
                 <?php 
             $i++;
             } ?>
-                </div>#8B3186
+                </div>
                 <div style="margin-top:50px;">
                     <button class="btn btn-success btn-block" style="padding:20px;" type="submit">Submit&Pass</button>
                     <br>

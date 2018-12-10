@@ -34,8 +34,8 @@ th,td{
     border-width: 7px;
 }
 
-nav{
-    /* border-radius: 0%; */
+nav::navbar-inverse{
+    background-color:#19261e;
 }
 
 .wrap{

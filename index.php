@@ -65,7 +65,7 @@
 </head>
 <body>
     <!-- navbar sija -->
-    <nav class="navbar navbar-inverse"  style = "background-color:#231C00">
+    <nav class="navbar navbar-inverse"  style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">HOME</a>

@@ -1,3 +1,15 @@
+<?php
+    require 'server.php';
+    $name = $_SESSION['name'];
+    if(isset($_POST['q_name'])){
+        echo "eiei";
+    }
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +37,7 @@
                 <a class="navbar-brand" href="index.php">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php //echo $name ?></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $name ?></a></li>
             </ul>
         </div>
     </nav>
@@ -124,19 +136,24 @@
                         <h2>New Quiz</h2>
                     </header>
                     <div class="w3-container" id="stm">
-                        <p>Quiz Name : </p>
-                        <input class="w3-input w3-border w3-round" type="text">
+                        <form action="" method="post">
+
+                          <p>Quiz Name : </p>
+                        <input class="w3-input w3-border w3-round" type="text" name = "q_name">
                         <p>Title Miage : </p>
-                        <input class="w3-input w3-border w3-round" type="file">
+                        <input class="w3-input w3-border w3-round" type="file" name = "q_img">
                         <p>Detail Quiz : </p>
-                        <textarea name="quiz-detail" id="" cols="35" rows="5"></textarea>
+                        <textarea name="q_detail" id="" cols="35" rows="5"></textarea>
                     </div>
                     <footer class="w3-container w3-teal">
                         <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
                         <div class="w3-panel" style="width:100%">
-                            <button class="w3-button w3-block w3-teal">Create</button>
+                            <button class="w3-button w3-block w3-teal" type = "submit">Create</button>
                         </div>
+                        
                     </footer>
+                        </form>
+                      
                 </div>
             </div>
         </div>
