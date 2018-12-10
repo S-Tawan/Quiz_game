@@ -46,15 +46,71 @@
                     <header class="w3-container w3-teal"> 
                         <span onclick="document.getElementById('id01').style.display='none'" 
                         class="w3-button w3-display-topright">&times;</span>
-                        <h2>New Quiz</h2>
+                        <h2>New Question</h2>
                     </header>
                     <div class="w3-container" id="stm">
-                        <p>Quiz Name : </p>
-                        <input class="w3-input w3-border w3-round" type="text">
-                        <p>Title Miage : </p>
-                        <input class="w3-input w3-border w3-round" type="file">
-                        <p>Detail Quiz : </p>
-                        <textarea name="quiz-detail" id="" cols="35" rows="5"></textarea>
+                        <p>Question Title : </p>
+                            <textarea name="quiz-detail" id="" cols="35" rows="3"></textarea>
+                        <p>Image Title : </p>
+                            <input class="w3-input w3-border w3-round" type="file">
+                        <p>Choice List :</p>
+                        <div class="table-responsive">          
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-1" style="text-align:center;border-style:solid;border-width: 7px;">Show</th>
+                                        <th style="text-align:center;border-style:solid;border-width: 7px;">Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" name="" id="" checked disabled></td>
+                                        <td>
+                                            <div class="form-group has-success has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" name="" id="" checked disabled></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" name="" id=""></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" name="" id=""></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" name="" id=""></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <footer class="w3-container w3-teal">
                         <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
