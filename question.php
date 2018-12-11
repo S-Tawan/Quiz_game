@@ -279,6 +279,7 @@ if(isset($_POST['up_ques_name'])){
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
+                <a class="navbar-brand" href="main.php">MyQuiz</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $name ?></a></li>
@@ -436,7 +437,7 @@ if(isset($_POST['up_ques_name'])){
             </div>
 
                 <!-- modal delete -->
-                <div class="modal fade" id="del_1" role="dialog">
+                <div class="modal fade" id="dqel_1" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
