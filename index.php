@@ -10,18 +10,18 @@
     <?php //}
 
     // $_SESSION['name'] = "Singha_".getToken(6);
-    $_SESSION['name'] = "Singha";
+    $_SESSION['name'] = "I am Guest Mother Fucker";
     $_SESSION['score'] = 0;
     $_SESSION['counter'] = 0;
     $_SESSION['correct'] = 0;
     $_SESSION['upscore'] = 0;
     $check = 'start';
-    unset($_SESSION['question']);
+    $_SESSION['question']=NULL;
     if ($_GET != null) {
         $check = $_GET['s_text'];
     }
     if($check!='start'){
-        $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$check'";
+        $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$check' AND `quiz_status` = '1'";
         $result = mysqli_query($con, $q);
         if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
@@ -33,10 +33,13 @@
             $q_detail = $row['quiz_detail'];
             $q_creator = $row['quiz_creator'];
             $check = 'true';
-            $q_ques = "SELECT `question_id` FROM `question` WHERE `quiz_id` ='$q_id' ORDER BY RAND() ";
+            $q_ques = "SELECT `question_id` FROM `question` WHERE `quiz_id` ='$q_id'   ORDER BY RAND() ";
             $re_ques = mysqli_query($con, $q_ques);
             while($row_ques = mysqli_fetch_assoc($re_ques)){
                 $_SESSION['question'][] = $row_ques['question_id'];
+            }
+            if($_SESSION['question']==NULL){
+                $check = 'fail';
             }
         }
          else {
@@ -185,26 +188,48 @@
                             <p></p><span>rate : </span>
                             <p></p>
                             <!-- <form method = "POST" action = "play.php?q_id=<?php echo $q_id ?>"> -->
-                            <a href="play.php?id=<?php echo $q_id ?>">
+                            <!-- <a href="play.php?id=<?php echo $q_id ?>"> -->
                             <center><button type="button" class="btn btn-primary" onclick="document.getElementById('require_name').style.display='block'">Enter Quiz</button></center>
-                            </a>
+                            <!-- </a> -->
                             <!-- <form> -->
                             <div id="require_name" class="w3-modal">
+                            <?php  
+                            if($_SESSION['name']=='I am Guest Mother Fucker'){
+
+                            
+                            ?>
                                 <div class="w3-modal-content w3-animate-top w3-card-4">
-                                <header class="w3-container w3-teal"> 
-                                    <span onclick="document.getElementById('id01').style.display='none'" 
-                                    class="w3-button w3-display-topright">&times;</span>
-                                    <h2>Modal Header</h2>
-                                </header>
-                                <div class="w3-container">
-                                    <p>Some text..</p>
-                                    <p>Some text..</p>
+                                    <header class="w3-container w3-teal"> 
+                                        <span onclick="document.getElementById('require_name').style.display='none'" 
+                                        class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Modal Header</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p>Some text..</p>
+                                        <p>Some text..</p>
+                                    </div>
+                                    <footer class="w3-container w3-teal">
+                                        <p>Modal Footer</p>
+                                    </footer>
                                 </div>
-                                <footer class="w3-container w3-teal">
-                                    <p>Modal Footer</p>
-                                </footer>
+                                <?php } else{ ?>
+                                    <div class="w3-modal-content w3-animate-top w3-card-4">
+                                    <header class="w3-container w3-teal"> 
+                                        <span onclick="document.getElementById('require_name').style.display='none'" 
+                                        class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Modal Header</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p>Some text..</p>
+                                        <p>Some text..</p>
+                                    </div>
+                                    <footer class="w3-container w3-teal">
+                                        <p>Modal Footer</p>
+                                    </footer>
                                 </div>
+                                <?php } ?>
                             </div>
+                            
                             <p></p>
                         </div>
                         <div class="col-sm-1" style="border-color:black"></div>
@@ -216,6 +241,7 @@
             </div>
         </div>
     </div>
+                           
         <!-- form search -->
         <div class="row" style="margin-top:50px">
             <div class="col-sm-4"></div>

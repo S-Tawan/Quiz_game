@@ -181,7 +181,8 @@ if(isset($_POST['del_quiz_id'])){
     $q_ques = "SELECT `question_id` FROM `question` WHERE `quiz_id` = '$del_quiz_id'";
     $re_ques = mysqli_query($con, $q_ques);
     while($row_ques = mysqli_fetch_assoc($re_ques)){
-        $q_ans_del = "DELETE FROM `answers` WHERE question_id = '$row_ques['question_id']'";
+        $ques_del = $row_ques['question_id'];
+        $q_ans_del = "DELETE FROM `answers` WHERE `question_id` = '$ques_del'";
         $re_ans_del = mysqli_query($con, $q_ans_del);
         $row_ans_del = mysqli_fetch_assoc($re_ans_del);
     }
