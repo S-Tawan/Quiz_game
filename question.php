@@ -124,6 +124,9 @@ $alert = 0;
     header('Location:question.php?id='.$quiz_id);
  }
 
+ $q_quiz = "SELECT * FROM `question` WHERE `quiz_id` ='$quiz_id'";   
+ $re_quiz = mysqli_query($con, $q_quiz);
+
 
 ?>
 
@@ -156,7 +159,7 @@ $alert = 0;
                 <a class="navbar-brand" href="index.php">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php //echo $name ?></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $name ?></a></li>
             </ul>
         </div>
     </nav>
@@ -164,24 +167,34 @@ $alert = 0;
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
+
+        <?php while($row_quiz = mysqli_fetch_assoc($re_quiz)) { 
+            $ques_id = $row_quiz['question_id'];
+            $q_correct = "SELECT `answers_name` FROM `answers` WHERE `answer_correct` = '1'  AND `question_id` ='$ques_id' LIMIT 1";
+            $re_correct = mysqli_query($con, $q_correct);
+            $row_correct = mysqli_fetch_assoc($re_correct);
+            $correct =  $row_correct['answers_name'];
+            
+            
+        ?>
             <!-- Top Card -->
             <div class="w3-card-4" id="card">
                 <!-- navbar question -->
                 <div class="w3-bar w3-deep-purple w3-animate-opacity">
-                    <button class="w3-bar-item w3-button" onclick="openCity('question')">Question</button>
-                    <button class="w3-bar-item w3-button" onclick="openCity('answer')">Answer</button>
-                    <button class="w3-bar-item w3-button" onclick="openCity('option')">Options</button>
+                    <button class="w3-bar-item w3-button" onclick="openCity('question_<?php echo $row_quiz['question_id'] ?>','tab_<?php echo $row_quiz['question_id'] ?>')">Question</button>
+                    <button class="w3-bar-item w3-button" onclick="openCity('answer_<?php echo $row_quiz['question_id'] ?>','tab_<?php echo $row_quiz['question_id'] ?>')">Answer</button>
+                    <button class="w3-bar-item w3-button" onclick="openCity('option_<?php echo $row_quiz['question_id'] ?>','tab_<?php echo $row_quiz['question_id'] ?>')">Options</button>
                 </div>
                 <!-- link on navbar -->
-                <div id="question" class="w3-container w3-display-container city" style="display:block;margin-top:0px;font-size: 4vw;">
-                    <h4>กิ้นบดคือ?</h4>
-                    <img src="image/kinbod.jpg" alt="" style="height:120px;max-width:100%;" srcset="">
+                <div id="question_<?php echo $row_quiz['question_id'] ?>" class="w3-container w3-display-container tab_<?php echo $row_quiz['question_id'] ?>" style="display:block;margin-top:0px;font-size: 4vw;">
+                    <h4><?php echo $row_quiz['question_name'] ?></h4>
+                    <img src="Question_image/<?php echo $row_quiz['question_img'] ?>" alt="" style="height:120px;max-width:100%;" srcset="">
                 </div>
-                <div id="answer" class="w3-container w3-display-container city w3-center" style="display:none;margin-top:50px;">
+                <div id="answer_<?php echo $row_quiz['question_id'] ?>" class="w3-container w3-display-container tab_<?php echo $row_quiz['question_id'] ?> w3-center" style="display:none;margin-top:50px;">
                     <center><i class="glyphicon glyphicon glyphicon-ok"></i></center>
-                    <p>"กิ้นบดก็คือคนที่ไม่รักดี จะต้องถูกทำโทษด้วยการอดมาดูเธียเตอร์นะค้า~~"</p>
+                    <p> <?php echo  $correct ?> </p>
                 </div>
-                <div id="option" class="w3-container w3-display-container city w3-center" style="display:none;margin-top:50px;">
+                <div id="option_<?php echo $row_quiz['question_id'] ?>" class="w3-container w3-display-container tab_<?php echo $row_quiz['question_id'] ?> w3-center" style="display:none;margin-top:50px;">
                     <button class="w3-button w3-ripple w3-yellow w3-xlarge">Edit</button><p></p>
                     <button class="w3-button w3-ripple w3-red w3-xlarge" target="#myModal">Delete</button>
                 </div>
@@ -205,6 +218,7 @@ $alert = 0;
                 </div>
             </div>
             <!-- Bottom Card -->
+        <?php } ?>
             
             <!-- button new quiz -->
             <button  class="w3-button w3-xlarge w3-circle" onclick="document.getElementById('id01').style.display='block'" id="ghost-btn-cir">+</button>
@@ -303,9 +317,9 @@ $alert = 0;
     <!-- script -->
     <script>
         // call navbar
-        function openCity(cityName) {
+        function openCity(cityName,tap) {
             var i;
-            var x = document.getElementsByClassName("city");
+            var x = document.getElementsByClassName(tap);
             for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";  
             }
