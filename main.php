@@ -117,6 +117,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
+                <a class="navbar-brand" href="main.php">MyQuiz</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $name ?></a></li>
