@@ -1,3 +1,133 @@
+<?php
+$quiz_id = $_GET['id'];
+require 'server.php';
+$name = $_SESSION['name'];
+$alert = 0;
+    //error
+    if(isset($_SESSION['error'])){
+        if($_SESSION['error']==1){ //ไม่สำเร็จ
+            $alert =1;
+        }else{//สำเร็จ
+            $alert = 2;
+            
+        }
+        unset($_SESSION['error']);
+    }
+    //random
+    function getToken($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet .= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+       for ($i=0; $i < $length; $i++) {
+           $token .= $codeAlphabet[random_int(0, $max-1)];
+       }
+       return $token;
+   }
+
+   if(isset($_POST['ques_name'])){
+ 
+    $ext = pathinfo(basename($_FILES["ques_img"]["name"]), PATHINFO_EXTENSION);
+    $new_taget_name = 'Question_image_' . uniqid() . "." . $ext;
+    $target_path = "Question_image/";
+    $upload_path = $target_path . $new_taget_name;
+    $uploadOk = 1;
+    
+    $imageFileType = strtolower(pathinfo($new_taget_name, PATHINFO_EXTENSION));
+    
+    if ($_FILES["ques_img"]["size"] > 8000000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+    
+    // Allow certain file formats
+    if ($imageFileType != "jpg"&&$imageFileType != "png") {
+        echo "Sorry, only png,jpg files are allowed.";
+        $uploadOk = 0;
+    }
+    
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    }
+    
+    else {
+        if (move_uploaded_file($_FILES["ques_img"]["tmp_name"], $upload_path)) {
+            echo 'Move success.';
+            $_SESSION['error'] = 0 ;
+        }else {
+             echo 'Move fail';
+             $_SESSION['error'] = 1;
+           
+        }
+    }
+    if($_SESSION['error']==0){
+     $ques_img = $_FILES["ques_img"]["name"];
+     $img = $new_taget_name;
+     $q_name = $_POST['ques_name'];
+     
+     $ques_id = 'qs_'.getToken(6);
+     
+        $q_qs = "INSERT INTO `question`(`question_id`, `question_name`, `question_img`, `question_time`, `quiz_id`) VALUES ('$ques_id','$q_name','$img','30','$quiz_id')";
+        $re_qs = mysqli_query($con, $q_qs);
+ 
+        if($re_qs){
+         $_SESSION['error']=2;
+        }
+        else{
+         $_SESSION['error']=1;
+        }  
+
+
+
+     for($i=1;$i<6;$i++){
+
+         $ans_id = 'as_'.getToken(6);
+         $ans = 'ans'.$i;
+         $check = 'check'.$i;
+         $ans_name = $_POST[$ans];
+         if($i<3){
+            $checked ='on';
+         }else{
+            if(isset($_POST[$check])){
+                $checked = $_POST[$check] ; 
+             }else{
+                $checked ='off';
+             }
+         }
+         
+         
+        if($i==1){
+            $q_ans = "INSERT INTO `answers`(`answers_id`, `answers_name`, `answer_correct`, `answers_show`, `question_id`) VALUES ('$ans_id','$ans_name','1','$checked','$ques_id')";
+        }else{
+            $q_ans = "INSERT INTO `answers`(`answers_id`, `answers_name`, `answer_correct`, `answers_show`, `question_id`) VALUES ('$ans_id','$ans_name','0','$checked','$ques_id')";
+
+        }
+         
+         $re_ans = mysqli_query($con, $q_ans);
+  
+         if($re_ans){
+          $_SESSION['error']=2;
+         }
+         else{
+          $_SESSION['error']=1;
+         }  
+
+     }
+    
+     
+ 
+ 
+ 
+     }
+   
+    // header('Location:main.php');
+ }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,6 +216,7 @@
                         class="w3-button w3-display-topright">&times;</span>
                         <h2>New Question</h2>
                     </header>
+                    <form action="question.php?id=<?php echo $quiz_id ?>" method="post" enctype="multipart/form-data" >
                     <div class="w3-container" id="stm">
                         <p>Question Title : </p>
                             <textarea name="quiz-detail" id="" cols="35" rows="3"></textarea>
@@ -97,7 +228,7 @@
                                 <option value="20">20s</option>
                             </select>
                         <p>Image Title : </p>
-                            <input class="w3-input w3-border w3-round" type="file">
+                            <input class="w3-input w3-border w3-round" name = "ques_img" type="file">
                         <p>Choice List :</p>
                         <div class="table-responsive">          
                             <table class="table">
@@ -109,46 +240,46 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input class="w3-check" type="checkbox" name="" id="" checked disabled></td>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check1" id="" checked disabled></td>
                                         <td>
                                             <div class="form-group has-success has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans1">
                                                 <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><input class="w3-check" type="checkbox" name="" id="" checked disabled></td>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check2" id="" checked disabled></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans2">
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><input class="w3-check" type="checkbox" name="" id=""></td>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check3" id=""></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans3">
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><input class="w3-check" type="checkbox" name="" id=""></td>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check4" id=""></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans4">
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><input class="w3-check" type="checkbox" name="" id=""></td>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check5" id=""></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans5">
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                             </div>
                                         </td>
@@ -163,6 +294,7 @@
                             <button class="w3-button w3-block w3-teal">Create</button>
                         </div>
                     </footer>
+                    </form>
                 </div>
             </div>
         </div>

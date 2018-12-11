@@ -1,17 +1,14 @@
 <?php
     require 'server.php';
     $name = $_SESSION['name'];
+    $alert = 0;
     //error
     if(isset($_SESSION['error'])){
         if($_SESSION['error']==1){ //ไม่สำเร็จ
-            echo "ไม่สำเร็จ";
+            $alert =1;
         }else{//สำเร็จ
-            echo "สำเร็จ";
-            ?>
-                <script>
-                    swal("Good job!", "You clicked the button!", "success");
-                </script>
-            <?php
+            $alert = 2;
+            
         }
         unset($_SESSION['error']);
     }
@@ -244,7 +241,15 @@ $re_quiz = mysqli_query($con, $q_quiz);
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.firstElementChild.className += " w3-border-red";
         }
-        swal("Good job!", "You clicked the button!", "success");
+        var check = <?php echo $alert ?>;
+        if(check==2){
+          swal("Good job!", "You clicked the button!", "success");  
+        }
+        else if(check==1){
+            swal("Nope!!!", "You clicked the button!", "error");  
+        }
+
+        
 
 
     </script>
