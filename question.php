@@ -121,7 +121,7 @@ $alert = 0;
  
      }
    
-    // header('Location:main.php');
+    header('Location:question.php?id='.$quiz_id);
  }
 
 
