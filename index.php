@@ -81,11 +81,33 @@
                 <a class="navbar-brand" href="index.php">HOME</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#" onclick="document.getElementById('login').style.display='block'"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                <li><a href="#" onclick="document.getElementById('sign_in').style.display='block'"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#" onclick="document.getElementById('login').style.display='block'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
+    <!-- Sign in form -->
+    <div id="sign_in" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+
+        <form class="w3-container" action="/action_page.php">
+            <div class="w3-section">
+                <label><b>Username</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <label><b>Password</b></label>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <p></p><label><b>Name</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="name" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">register</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('sign_in').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+        </div>
+    </div>
     <!-- login form -->
     <div id="login" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
