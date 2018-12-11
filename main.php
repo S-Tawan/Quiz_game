@@ -177,12 +177,58 @@ $re_quiz = mysqli_query($con, $q_quiz);
 
                      ?></p>
                 </div>
-
+                <!-- Navbar Option -->
                 <div id="option_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none;margin-top:50px;">
-                    
-                   <a><button class="w3-button w3-block w3-round-large w3-large w3-yellow">Edit</button><p></p>
-                    <button class="w3-button w3-block w3-round-large w3-large w3-red">Delete</button>
+                    <button class="w3-button w3-block w3-round-large w3-large w3-yellow" data-toggle="modal" data-target="#main_edit_1">Edit</button>
+                    <button class="w3-button w3-block w3-round-large w3-large w3-red" style="margin-top:10px;" data-toggle="modal" data-target="#main_del_1">Delete</button>
                 </div>
+
+                <!-- mddal update quiz -->
+                <div id="main_edit_1" class="modal">
+                    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:500px;">
+                        <header class="w3-container w3-teal"> 
+                            <h2>Edit Quiz</h2>
+                        </header>
+                        <div class="w3-container" id="stm">
+                            <form action="main.php" method="post" enctype="multipart/form-data">
+
+                            <p>Quiz Name : </p>
+                            <input class="w3-input w3-border w3-round" type="text" name = "q_name">
+                            <p>Title Miage : </p>
+                            <input class="w3-input w3-border w3-round" type="file" name = "q_img">
+                            <p>Detail Quiz : </p>
+                            <textarea name="q_detail" id="" cols="35" rows="5"></textarea>
+                        </div>
+                        <footer class="w3-container w3-teal">
+                            <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
+                            <div class="w3-panel" style="width:100%">
+                                <button class="w3-button w3-block w3-teal" type = "submit">Create</button>
+                            </div>
+                            
+                        </footer>
+                            </form>
+                        
+                    </div>
+                </div>
+
+                <!-- modal delete -->
+                <div class="modal fade" id="main_del_1" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Delete Question</h4>
+                            </div>
+                            <div class="modal-body">
+                                <button class="w3-button w3-ripple w3-green w3-xlarge">Yes</button><p></p>
+                                <button class="w3-button w3-ripple w3-red w3-xlarge">No</button>
+                            </div>
+                            <div class="modal-footer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Script in navbar -->
                 <script>
                     openCity(event, 'quiz_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');
                 </script>
@@ -248,10 +294,6 @@ $re_quiz = mysqli_query($con, $q_quiz);
         else if(check==1){
             swal("Nope!!!", "You clicked the button!", "error");  
         }
-
-        
-
-
     </script>
 
 </body>

@@ -196,7 +196,7 @@ $alert = 0;
                 </div>
                 <div id="option_<?php echo $row_quiz['question_id'] ?>" class="w3-container w3-display-container city w3-center" style="display:none;margin-top:50px;">
                     <button class="w3-button w3-ripple w3-yellow w3-xlarge" data-toggle="modal" data-target="#edit_1">Edit</button><p></p>
-                    <button class="w3-button w3-ripple w3-red w3-xlarge" data-toggle="modal" data-target="#del_1">Delete</button>
+                    <button class="w3-button w3-ripple w3-red w3-xlarge" data-toggle="modal" data-target="#dqel_1">Delete</button>
                 </div>
 
                 <!-- madal edit -->
@@ -270,11 +270,6 @@ $alert = 0;
                                         <td><input class="w3-check" type="checkbox" value = "on"  name="check5" id=""></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess" name = "ans5">
-                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                                            </div>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -290,7 +285,7 @@ $alert = 0;
             </div>
 
                 <!-- modal delete -->
-                <div class="modal fade" id="del_1" role="dialog">
+                <div class="modal fade" id="dqel_1" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
