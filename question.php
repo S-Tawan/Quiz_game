@@ -34,9 +34,47 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
+            <!-- Top Card -->
             <div class="w3-card-4" id="card">
-                <div class="container-fluid" >aa</div>
+                <!-- navbar question -->
+                <div class="w3-bar w3-deep-purple w3-animate-opacity">
+                    <button class="w3-bar-item w3-button" onclick="openCity('question')">Question</button>
+                    <button class="w3-bar-item w3-button" onclick="openCity('answer')">Answer</button>
+                    <button class="w3-bar-item w3-button" onclick="openCity('option')">Options</button>
+                </div>
+                <!-- link on navbar -->
+                <div id="question" class="w3-container w3-display-container city" style="display:block;margin-top:0px;font-size: 4vw;">
+                    <h4>กิ้นบดคือ?</h4>
+                    <img src="image/kinbod.jpg" alt="" style="height:120px;max-width:100%;" srcset="">
+                </div>
+                <div id="answer" class="w3-container w3-display-container city w3-center" style="display:none;margin-top:50px;">
+                    <center><i class="glyphicon glyphicon glyphicon-ok"></i></center>
+                    <p>"กิ้นบดก็คือคนที่ไม่รักดี จะต้องถูกทำโทษด้วยการอดมาดูเธียเตอร์นะค้า~~"</p>
+                </div>
+                <div id="option" class="w3-container w3-display-container city w3-center" style="display:none;margin-top:50px;">
+                    <button class="w3-button w3-ripple w3-yellow w3-xlarge">Edit</button><p></p>
+                    <button class="w3-button w3-ripple w3-red w3-xlarge" target="#myModal">Delete</button>
+                </div>
+                <!-- madal edit -->
+                <!-- modal delete -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                                </div>
+                                <div class="modal-body">
+                                <p>This is a small modal.</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- Bottom Card -->
             
             <!-- button new quiz -->
             <button  class="w3-button w3-xlarge w3-circle" onclick="document.getElementById('id01').style.display='block'" id="ghost-btn-cir">+</button>
@@ -51,6 +89,13 @@
                     <div class="w3-container" id="stm">
                         <p>Question Title : </p>
                             <textarea name="quiz-detail" id="" cols="35" rows="3"></textarea>
+                        <p>Time for Quiz :</p>
+                            <select class="w3-select" name="option">
+                                <option value="" disabled selected>Choose time</option>
+                                <option value="10">10s</option>
+                                <option value="15">15s</option>
+                                <option value="20">20s</option>
+                            </select>
                         <p>Image Title : </p>
                             <input class="w3-input w3-border w3-round" type="file">
                         <p>Choice List :</p>
@@ -123,5 +168,17 @@
         </div>
         <div class="col-md-1"></div>
     </div>
+    <!-- script -->
+    <script>
+        // call navbar
+        function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+            }
+            document.getElementById(cityName).style.display = "block";  
+        }
+    </script>
 </body>
 </html>
