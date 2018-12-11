@@ -1,6 +1,8 @@
 <?php
-$quiz_id = $_GET['id'];
+
 require 'server.php';
+$quiz_id = $_GET['id'];
+$_SESSION['quiz_id']=$quiz_id;
 $name = $_SESSION['name'];
 $check_img = 0 ;
 $alert = 0;
@@ -241,6 +243,7 @@ if(isset($_POST['up_ques_name'])){
 }
 // end update
 
+
 //query เพื่อแสดง question ทั้งหมด
  $q_quiz = "SELECT * FROM `question` WHERE `quiz_id` ='$quiz_id'";   
  $re_quiz = mysqli_query($con, $q_quiz);
@@ -437,7 +440,7 @@ if(isset($_POST['up_ques_name'])){
             </div>
 
                 <!-- modal delete -->
-                <div class="modal fade" id="dqel_1" role="dialog">
+                <div class="modal fade" id="del_<?php echo $row_quiz['question_id'] ?>" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -445,7 +448,7 @@ if(isset($_POST['up_ques_name'])){
                                 <h4 class="modal-title">Delete Question</h4>
                             </div>
                             <div class="modal-body">
-                                <button class="w3-button w3-ripple w3-green w3-xlarge">Yes</button><p></p>
+                                <a href="delete_question.php?id=<?php echo $row_quiz['question_id'] ?>"><button class="w3-button w3-ripple w3-green w3-xlarge">Yes</button><p></p></a>
                                 <button class="w3-button w3-ripple w3-red w3-xlarge">No</button>
                             </div>
                             <div class="modal-footer"></div>

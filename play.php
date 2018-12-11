@@ -133,7 +133,7 @@
                 <div class="col-lg-6" name="pic_quiz">
                     <div class="container-fluid" style="background-color:;width:auto;height:400px;">
                         <div class="container-fluid" style="text-align: center" >
-                        <img src="image/<?php echo $row_ques['question_img'] ?>" alt="" style="width:auto;margin-top:10px;height:380px;text-align: center;"  >
+                        <img src="Question_image/<?php echo $row_ques['question_img'] ?>" alt="" style="width:auto;margin-top:10px;height:380px;text-align: center;"  >
                          </div>
 
                 
