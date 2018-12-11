@@ -89,7 +89,6 @@
     <!-- Sign in form -->
     <div id="sign_in" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
-
         <form class="w3-container" action="/action_page.php">
             <div class="w3-section">
                 <label><b>Username</b></label>
@@ -187,9 +186,25 @@
                             <p></p>
                             <!-- <form method = "POST" action = "play.php?q_id=<?php echo $q_id ?>"> -->
                             <a href="play.php?id=<?php echo $q_id ?>">
-                            <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
+                            <center><button type="button" class="btn btn-primary" onclick="document.getElementById('require_name').style.display='block'">Enter Quiz</button></center>
                             </a>
                             <!-- <form> -->
+                            <div id="require_name" class="w3-modal">
+                                <div class="w3-modal-content w3-animate-top w3-card-4">
+                                <header class="w3-container w3-teal"> 
+                                    <span onclick="document.getElementById('id01').style.display='none'" 
+                                    class="w3-button w3-display-topright">&times;</span>
+                                    <h2>Modal Header</h2>
+                                </header>
+                                <div class="w3-container">
+                                    <p>Some text..</p>
+                                    <p>Some text..</p>
+                                </div>
+                                <footer class="w3-container w3-teal">
+                                    <p>Modal Footer</p>
+                                </footer>
+                                </div>
+                            </div>
                             <p></p>
                         </div>
                         <div class="col-sm-1" style="border-color:black"></div>
