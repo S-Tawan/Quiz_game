@@ -32,7 +32,7 @@
     $i = $_SESSION['counter'];
     // echo $i;
     $now_q = $_SESSION['question'][$i];
-    $q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' ORDER BY RAND() ";
+    $q_ans = "SELECT * FROM `answers` WHERE `question_id` = '$now_q' AND `answers_show` = 'on' ORDER BY RAND() ";
     $re_ans = mysqli_query($con, $q_ans);
     $q_ques = "SELECT `question_name`,`question_time`,`question_img` FROM `question` WHERE `question_id` ='$now_q' ";
     $re_ques = mysqli_query($con, $q_ques);
