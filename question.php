@@ -194,25 +194,114 @@ $alert = 0;
                     <center><i class="glyphicon glyphicon glyphicon-ok"></i></center>
                     <p> <?php echo  $correct ?> </p>
                 </div>
-                <div id="option_<?php echo $row_quiz['question_id'] ?>" class="w3-container w3-display-container tab_<?php echo $row_quiz['question_id'] ?> w3-center" style="display:none;margin-top:50px;">
-                    <button class="w3-button w3-ripple w3-yellow w3-xlarge">Edit</button><p></p>
-                    <button class="w3-button w3-ripple w3-red w3-xlarge" target="#myModal">Delete</button>
+                <div id="option_<?php echo $row_quiz['question_id'] ?>" class="w3-container w3-display-container city w3-center" style="display:none;margin-top:50px;">
+                    <button class="w3-button w3-ripple w3-yellow w3-xlarge" data-toggle="modal" data-target="#edit_1">Edit</button><p></p>
+                    <button class="w3-button w3-ripple w3-red w3-xlarge" data-toggle="modal" data-target="#del_1">Delete</button>
                 </div>
+
                 <!-- madal edit -->
+            <div id="edit_1" class="modal fade" role="dialog">
+                <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:500px;">
+                    <header class="w3-container w3-teal"> 
+                        <span onclick="document.getElementById('id01').style.display='none'" 
+                        class="w3-button w3-display-topright">&times;</span>
+                        <h2>Edit Question</h2>
+                    </header>
+                    <form action="question.php?id=<?php echo $quiz_id ?>" method="post" enctype="multipart/form-data" >
+                    <div class="w3-container" id="stm">
+                        <p>Question Title : </p>
+                            <textarea name="quiz-detail" id="" cols="35" rows="3"></textarea>
+                        <p>Time for Quiz :</p>
+                            <select class="w3-select" name="option">
+                                <option value="" disabled selected>Choose time</option>
+                                <option value="10">10s</option>
+                                <option value="15">15s</option>
+                                <option value="20">20s</option>
+                            </select>
+                        <p>Image Title : </p>
+                            <input class="w3-input w3-border w3-round" name = "ques_img" type="file">
+                        <p>Choice List :</p>
+                        <div class="table-responsive">          
+                            <table class="table" style="text-align:center;">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-1" style="text-align:center;border-style:solid;border-width: 7px;">Show</th>
+                                        <th style="text-align:center;border-style:solid;border-width: 7px;">Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check1" id="" checked disabled></td>
+                                        <td>
+                                            <div class="form-group has-success has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans1">
+                                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check2" id="" checked disabled></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans2">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check3" id=""></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans3">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check4" id=""></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans4">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="w3-check" type="checkbox" value = "on"  name="check5" id=""></td>
+                                        <td>
+                                            <div class="form-group has-error has-feedback">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans5">
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <footer class="w3-container w3-teal">
+                        <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
+                        <div class="w3-panel" style="width:100%">
+                            <button class="w3-button w3-block w3-teal">Update</button>
+                        </div>
+                    </footer>
+                    </form>
+                </div>
+            </div>
+
                 <!-- modal delete -->
-                <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal fade" id="del_1" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Modal Header</h4>
-                                </div>
-                                <div class="modal-body">
-                                <p>This is a small modal.</p>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <h4 class="modal-title">Delete Question</h4>
                             </div>
+                            <div class="modal-body">
+                                <button class="w3-button w3-ripple w3-green w3-xlarge">Yes</button><p></p>
+                                <button class="w3-button w3-ripple w3-red w3-xlarge">No</button>
+                            </div>
+                            <div class="modal-footer"></div>
                         </div>
                     </div>
                 </div>
@@ -221,9 +310,9 @@ $alert = 0;
         <?php } ?>
             
             <!-- button new quiz -->
-            <button  class="w3-button w3-xlarge w3-circle" onclick="document.getElementById('id01').style.display='block'" id="ghost-btn-cir">+</button>
+            <button  class="w3-button w3-xlarge w3-circle" data-toggle="modal" data-target="#id01" id="ghost-btn-cir">+</button>
             <!-- mddal new quiz -->
-            <div id="id01" class="w3-modal">
+            <div id="id01" class="modal fade" role="dialog">
                 <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:500px;">
                     <header class="w3-container w3-teal"> 
                         <span onclick="document.getElementById('id01').style.display='none'" 
@@ -245,7 +334,7 @@ $alert = 0;
                             <input class="w3-input w3-border w3-round" name = "ques_img" type="file">
                         <p>Choice List :</p>
                         <div class="table-responsive">          
-                            <table class="table">
+                            <table class="table" style="text-align:center;">
                                 <thead>
                                     <tr>
                                         <th class="col-md-1" style="text-align:center;border-style:solid;border-width: 7px;">Show</th>
@@ -321,7 +410,7 @@ $alert = 0;
             var i;
             var x = document.getElementsByClassName(tap);
             for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
+                x[i].style.display = "none";  
             }
             document.getElementById(cityName).style.display = "block";  
         }
