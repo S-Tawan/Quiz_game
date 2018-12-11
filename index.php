@@ -1,5 +1,14 @@
 <?php
     require 'server.php';
+
+    //facebook login not doit
+    //require 'fb-init.php';
+    //if(isset($_SESSION['access_token'])){ ?>
+        <!-- <a href="">Logout</a> -->
+    <?php //}else{ ?>
+        <!-- <a href="<?php //echo $login_url;?>">Login FB</a> -->
+    <?php //}
+
     // $_SESSION['name'] = "Singha_".getToken(6);
     $_SESSION['name'] = "Singha";
     $_SESSION['score'] = 0;
@@ -57,7 +66,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -72,11 +81,53 @@
                 <a class="navbar-brand" href="index.php">HOME</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="#" onclick="document.getElementById('sign_in').style.display='block'"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#" onclick="document.getElementById('login').style.display='block'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
+    <!-- Sign in form -->
+    <div id="sign_in" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+        <form class="w3-container" action="/action_page.php">
+            <div class="w3-section">
+                <label><b>Username</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <label><b>Password</b></label>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <p></p><label><b>Name</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="name" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">register</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('sign_in').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+        </div>
+    </div>
+    <!-- login form -->
+    <div id="login" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+
+        <form class="w3-container" action="/action_page.php">
+            <div class="w3-section">
+                <label><b>Username</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <label><b>Password</b></label>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+        </div>
+    </div>
+
     <div id = 'box' ></div>
     <!-- Card -->
     <!-- <div class="wrap">
@@ -135,9 +186,25 @@
                             <p></p>
                             <!-- <form method = "POST" action = "play.php?q_id=<?php echo $q_id ?>"> -->
                             <a href="play.php?id=<?php echo $q_id ?>">
-                            <center><button type="button" class="btn btn-primary" >Enter Quiz</button></center>
+                            <center><button type="button" class="btn btn-primary" onclick="document.getElementById('require_name').style.display='block'">Enter Quiz</button></center>
                             </a>
                             <!-- <form> -->
+                            <div id="require_name" class="w3-modal">
+                                <div class="w3-modal-content w3-animate-top w3-card-4">
+                                <header class="w3-container w3-teal"> 
+                                    <span onclick="document.getElementById('id01').style.display='none'" 
+                                    class="w3-button w3-display-topright">&times;</span>
+                                    <h2>Modal Header</h2>
+                                </header>
+                                <div class="w3-container">
+                                    <p>Some text..</p>
+                                    <p>Some text..</p>
+                                </div>
+                                <footer class="w3-container w3-teal">
+                                    <p>Modal Footer</p>
+                                </footer>
+                                </div>
+                            </div>
                             <p></p>
                         </div>
                         <div class="col-sm-1" style="border-color:black"></div>
@@ -156,6 +223,14 @@
                 <form action ="index.php" method="GET">
                     <div class="container-fluid">
                         <div class="input-group">
+
+                            <!-- new search-box -->
+                            <!-- <div class="search-box">
+                                <input class="search-txt" type="text" name="" id="" placeholder="Enter QuizCode">
+                                <a href="" type="search-btn"><i class="fas fa-search"></i></a>
+                            </div> -->
+
+                            <!-- old search-box -->
                             <input type="text" class="form-control" placeholder="Enter QuizCode" name="s_text">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"  name="asd" >
@@ -198,34 +273,32 @@
 </html>
 
 <script>
+    randomfontcolor('bg1');
+    randomfontcolor('bg2');
+    randomfontcolor('bg3');
+    randomfontcolor('bg4');
+    randomfontcolor('bg5');
+    randomfontcolor('bg6');
+    randomfontcolor('bg7');
+    randomfontcolor('bg8');
 
-     
-randomfontcolor('bg1');
-randomfontcolor('bg2');
-randomfontcolor('bg3');
-randomfontcolor('bg4');
-randomfontcolor('bg5');
-randomfontcolor('bg6');
-randomfontcolor('bg7');
-randomfontcolor('bg8');
+    function randomfontcolor (eiei){
 
-function randomfontcolor (eiei){
+    var random = document.getElementById(eiei);
+    random.style.color = getRandomColor();
 
-var random = document.getElementById(eiei);
-random.style.color = getRandomColor();
-
-setTimeout(function(){
-  randomfontcolor (eiei);
-}, 100);
-};
+    setTimeout(function(){
+        randomfontcolor (eiei);
+        }, 100);
+    };
 
 
-function getRandomColor() {
-var letters = '0123456789ABCDEF';
-var color = '#';
-for (var i = 0; i < 6; i++) {
-color += letters[Math.floor(Math.random() * 16)];
-}
-return color;
-}
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 </script>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>QuizSiJa</title>
     <?php
     require 'link_title.php';
@@ -22,6 +23,12 @@
             </ul>
         </div>
     </nav>
+
+    <!-- new search-box -->
+    <div class="search-box">
+                        <input class="search-txt" type="text" name="" id="" placeholder="Enter QuizCode">
+                        <a href="" type="search-btn"><i class="fas fa-search"></i></a>
+                    </div>
 
     <!-- check login -->
     <!-- Modal -->
