@@ -205,7 +205,8 @@
                 <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="log_username" required>
                 <label><b>Password</b></label>
                 <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="log_psw" required>
-                <a href="<?php echo $loginUrl ?>" class="fb btnnaja"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+                <!-- Incomming -->
+                <!-- <a href="<?php //echo $loginUrl ?>" class="fb btnnaja"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a> -->
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
             </div>
         </form>
