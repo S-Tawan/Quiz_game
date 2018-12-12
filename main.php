@@ -287,7 +287,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
                 </div></a>
 
                 <div id="view_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none;margin-top:20px">
-                    <h2>Plays</h2>
+                    <h2>Played</h2>
                     <p><?php echo $count ?></p>
                    
                     <h2>Top Score</h2>
