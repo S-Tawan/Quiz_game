@@ -1,6 +1,6 @@
 <?php
     require 'server.php';
-    require 'fb-init.php';
+    // require 'fb-init.php';
     
 
     //facebook login not doit
