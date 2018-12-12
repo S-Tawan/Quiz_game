@@ -177,6 +177,8 @@ if(isset($_POST['del_quiz_id'])){
     // $row_quiz_del = mysqli_fetch_assoc($re_quiz_del);
     $q_ques_del = "DELETE FROM `question` WHERE `quiz_id` = '$del_quiz_id'";
     $re_ques_del = mysqli_query($con, $q_ques_del);
+    $q_score_del = "DELETE FROM `score` WHERE `quiz_id` = '$del_quiz_id'";
+    $re_score_del = mysqli_query($con, $q_score_del);
     // $row_ques_del = mysqli_fetch_assoc($re_ques_del);
     $q_ques = "SELECT `question_id` FROM `question` WHERE `quiz_id` = '$del_quiz_id'";
     $re_ques = mysqli_query($con, $q_ques);
@@ -223,7 +225,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
@@ -234,7 +236,9 @@ $re_quiz = mysqli_query($con, $q_quiz);
             </ul>
         </div>
     </nav>
-
+    <div style = "text-align: center;color:whitesmoke;font-size:100px;font-family: 'Kanit', sans-serif;margin-top:-20px;">
+            MyQuiz
+    </div>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
@@ -298,7 +302,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
 
                 <!-- mddal update quiz -->
                 <div id="main_edit_<?php echo $row_quiz['quiz_id'] ?>" class="modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:500px;">
+                    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:500px;margin-top:100px;">
                         <header class="w3-container w3-teal"> 
                             <h2>Edit Quiz</h2>
                         </header>

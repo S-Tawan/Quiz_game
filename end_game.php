@@ -28,7 +28,7 @@
     }
     }
 
-    $q_rank = "SELECT COUNT(*) AS mycount FROM `score` WHERE `score_point` >= $sc ";
+    $q_rank = "SELECT COUNT(*) AS mycount FROM `score` WHERE `score_point` >= $sc AND quiz_id = '$qz' ";
     $re_rank = mysqli_query($con, $q_rank);
     $row_rank = mysqli_fetch_assoc($re_rank);
 
@@ -60,7 +60,7 @@
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
