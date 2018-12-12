@@ -168,27 +168,27 @@
                 $i = 0;
                 while($row_ans = mysqli_fetch_assoc($re_ans)){?>
                 <?php if($i%5 == 0 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#2F6DAE;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;  ">
+                    <label class="w3-button" style ="background-color:#2F6DAE;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;  ">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 1 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#2C9CA6;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="w3-button" style ="background-color:#2C9CA6;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 2 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#ECA82C;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="w3-button" style ="background-color:#ECA82C;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 3 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#D4546A;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="w3-button" style ="background-color:#D4546A;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 4 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#8B3186;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="w3-button" style ="background-color:#8B3186;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
