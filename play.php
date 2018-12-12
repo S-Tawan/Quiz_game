@@ -140,7 +140,7 @@
                      </div>
                 </div>
                 <div class="col-lg-6" name="text_quiz">
-                    <div class="container-fluid" style="background-color:;width:auto;height:400px; font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:50px; ">
+                    <div class="container-fluid" style="background-color:;width:auto;height:400px; font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:50px; " >
                         <div class="container-fluid">
                             <?php echo $row_ques['question_name'] ?>
                         </div>
@@ -152,7 +152,7 @@
                 ?>
                      <div class="col-lg-12" name="text_quiz">
                     <div class="container-fluid" style="background-color:;width:auto;height:400px; font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:50px; ">
-                        <div class="container-fluid">
+                        <div class="container-fluid" >
                             <?php echo $row_ques['question_name'] ?>
                         </div>
                       
@@ -163,32 +163,32 @@
             </div>
             <!-- question answer -->
             <form action="play.php" method="POST" name = 'Myform'>
-                <div class="btn-group btn-group-justified" data-toggle="buttons" style="background-color:white;height:200px;margin-top:10px;" required >
+                <div class="btn-group btn-group-justified" data-toggle="buttons" style="background-color:white;height:200px;margin-top:10px;"  required >
                 <?php
                 $i = 0;
                 while($row_ans = mysqli_fetch_assoc($re_ans)){?>
                 <?php if($i%5 == 0 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#2F6DAE;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;  ">
-                        <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
+                    <label class="btn btn-secondary singha" style ="background-color:#2F6DAE;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;  " onclick="openCity('ans1','singha')" id = "ans1">
+                        <input type="radio" name="options"   autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 1 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#2C9CA6;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="btn btn-secondary singha" style ="background-color:#2C9CA6;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;"onclick="openCity('ans2','singha')" id = "ans2">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 2 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#ECA82C;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="btn btn-secondary singha" style ="background-color:#ECA82C;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;"onclick="openCity('ans3','singha')" id = "ans3">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 3 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#D4546A;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="btn btn-secondary singha" style ="background-color:#D4546A;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;"onclick="openCity('ans4','singha')" id = "ans4">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
                <?php if($i%5 == 4 ){  ?>
-                    <label class="btn btn-secondary" style ="background-color:#8B3186;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;">
+                    <label class="btn btn-secondary singha" style ="background-color:#8B3186;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:40px;"onclick="openCity('ans5','singha')" id = "ans5">
                         <input type="radio" name="options"  autocomplete="off" value = "<?php echo $row_ans['answers_id'] ?>"  required > <?php echo $row_ans['answers_name']  ?>
                     </label>
                <?php } ?>
@@ -210,7 +210,42 @@
 
 </body>
 </html>
- <script >
-     var time = <?php echo $time ?>;
+<script>
+   var time = <?php echo $time ?>;
         progress(time,time, $('#progressBar'));
-    </script>
+</script>
+ <script >
+  
+
+       randomfontcolor('eiei');     
+     function randomfontcolor (eiei){
+
+    var random = document.getElementById(eiei);
+    random.style.backgroundColor = getRandomColor();
+
+    setTimeout(function(){
+        randomfontcolor (eiei);
+        }, 150);
+    };
+
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    
+</script>
+<script>
+     function openCity(id_name,class_name) {
+            var i;
+            var x = document.getElementsByClassName(class_name);
+            for (i = 0; i < x.length; i++) {
+                x[i].style.opacity = "1";  
+            }
+            document.getElementById(id_name).style.opacity = "0.6";  
+        }
+</script>

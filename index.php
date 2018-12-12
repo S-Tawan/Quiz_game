@@ -272,11 +272,11 @@
                         <div class="col-sm-7" style="border-color:#6A9955;border-style:solid;border-radius:5px;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:18px;"><p></p><p>Detail :<br><?php echo $q_detail ?></p></div>
                         <div class="col-sm-1"></div>
                         <div class="col-sm-4" style="border-color:#6A9955;border-style:solid;border-radius:5px;font-family: 'Kanit', sans-serif;text-align: center;color:whitesmoke;font-size:18px;">
-                            <p></p><span>rate : </span>
-                            <p></p>
+                           
+                           
                             <!-- <form method = "POST" action = "play.php?q_id=<?php echo $q_id ?>"> -->
                             <!-- <a href="play.php?id=<?php echo $q_id ?>"> -->
-                            <center><button type="button" class="btn btn-primary" onclick="document.getElementById('require_name').style.display='block'">Enter Quiz</button></center>
+                            <center><button type="button" class="btn btn-primary" onclick="document.getElementById('require_name').style.display='block'" style = "height:50px;width:100%;margin-top: 20px;margin-bottom: 10px;">Enter Quiz</button></center>
                             <!-- </a> -->
                             <!-- <form> -->
                             <div id="require_name" class="w3-modal">

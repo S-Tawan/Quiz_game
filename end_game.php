@@ -20,6 +20,7 @@
 
     if($_SESSION['upscore'] == 0){
     $score_id = 'sc_'.getToken(6);
+    $_SESSION['new_sc'] =  $score_id;
     $q_sc = " INSERT INTO `score`(`score_id`, `score_point`, `user_name`, `quiz_id`) VALUES ('$score_id','$sc','$name','$qz')";
     $re_sc = mysqli_query($con, $q_sc);
 
@@ -108,7 +109,9 @@
                                 <?php 
                                 $i = 1;
                                 while($row_TOP = mysqli_fetch_assoc($re_TOP)){ 
-                                    
+                                    if($row_TOP['score_id']==$_SESSION['new_sc']){
+                                        
+                                    }
                                 ?>
                             <tr>
                                 <td><?php echo $i ?></td>
