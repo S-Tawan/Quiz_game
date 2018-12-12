@@ -347,10 +347,17 @@ if(isset($_POST['up_ques_name'])){
                             <textarea name="up_ques_name" id="" cols="35" rows="3" value = "" ><?php echo $row_quiz['question_name'] ?></textarea>
                         <p>Time for Quiz :</p>
                             <select class="w3-select" name="up_option" required >
-                                <option value="" disabled selected>Choose time</option>
-                                <option value="10">10s</option>
-                                <option value="15">15s</option>
-                                <option value="20">20s</option>
+                                <!-- <option value="" disabled selected>Choose time</option> -->
+                                <?php 
+                                $array = array(15,30,45,60) ;
+                                for($i = 0 ; $i<count($array);$i++){ 
+                                    if($array[$i]==$row_quiz['question_time']){
+                                ?>
+                                        <option value="<?php echo $array[$i] ?>" selected><?php echo $array[$i] ?>s</option>
+                                    <?php }else{ ?>
+                                        <option value="<?php echo $array[$i] ?>" ><?php echo $array[$i] ?>s</option>
+                                    <?php } }?>
+                             
                             </select>
                         <p>Image Title : </p>
                             <input class="w3-input w3-border w3-round" name = "up_ques_img" type="file">
@@ -375,7 +382,7 @@ if(isset($_POST['up_ques_name'])){
                                         <td><input class="w3-check" type="checkbox" value = "on"  name="up_check<?php echo $count ?>" id="" checked disabled></td>
                                         <td>
                                             <div class="form-group has-success has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess" name = "up_ans<?php echo $count ?>" value = '<?php echo $row_now_ans['answers_name'] ?>' >
+                                                <input type="text" class="form-control" id="inputSuccess" name = "up_ans<?php echo $count ?>" value = '<?php echo $row_now_ans['answers_name'] ?>'  required>
                                                 <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                                             </div>
                                         </td>
@@ -386,7 +393,7 @@ if(isset($_POST['up_ques_name'])){
                                         <td><input class="w3-check" type="checkbox" value = "on"  name="up_check<?php echo $count ?>" id="" checked disabled></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess" name = "up_ans<?php echo $count ?>" value = '<?php echo $row_now_ans['answers_name'] ?>'>
+                                                <input type="text" class="form-control" id="inputSuccess" name = "up_ans<?php echo $count ?>" value = '<?php echo $row_now_ans['answers_name'] ?>'  required>
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                             </div>
                                         </td>
@@ -481,9 +488,10 @@ if(isset($_POST['up_ques_name'])){
                         <p>Time for Quiz :</p>
                             <select class="w3-select" name="option" required>
                                 <option value="" disabled selected>Choose time</option>
-                                <option value="10">10s</option>
                                 <option value="15">15s</option>
-                                <option value="20">20s</option>
+                                <option value="30">30s</option>
+                                <option value="45">45s</option>
+                                <option value="60">60s</option>
                             </select>
                         <p>Image Title : </p>
                             <input class="w3-input w3-border w3-round" name = "ques_img" type="file">
@@ -501,7 +509,7 @@ if(isset($_POST['up_ques_name'])){
                                         <td><input class="w3-check" type="checkbox" value = "on"  name="check1" id="" checked disabled required></td>
                                         <td>
                                             <div class="form-group has-success has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess" name = "ans1">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans1"  required>
                                                 <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                                             </div>
                                         </td>
@@ -510,7 +518,7 @@ if(isset($_POST['up_ques_name'])){
                                         <td><input class="w3-check" type="checkbox" value = "on"  name="check2" id="" checked disabled required></td>
                                         <td>
                                             <div class="form-group has-error has-feedback">
-                                                <input type="text" class="form-control" id="inputSuccess" name = "ans2">
+                                                <input type="text" class="form-control" id="inputSuccess" name = "ans2"  required>
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                             </div>
                                         </td>

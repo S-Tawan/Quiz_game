@@ -133,7 +133,8 @@ if(isset($_POST['up_q_name'])){
             $q_name = $_POST['up_q_name'];
             $detail = $_POST['up_q_detail'];
             $q_id = $_POST['quiz_id'];
-            $q_qz = "UPDATE `quiz` SET `quiz_name`='$q_name',`quiz_detail`='$detail' WHERE `quiz_id` = '$q_id' ";
+            $status=$_POST['status'];
+            $q_qz = "UPDATE `quiz` SET `quiz_name`='$q_name',`quiz_detail`='$detail',`quiz_status`='$status' WHERE `quiz_id` = '$q_id' ";
             $re_qz = mysqli_query($con, $q_qz);
         
             if($re_qz){
@@ -152,7 +153,8 @@ if(isset($_POST['up_q_name'])){
             $q_name = $_POST['up_q_name'];
             $detail = $_POST['up_q_detail'];
             $q_id = $_POST['quiz_id'];
-            $q_qz = "UPDATE `quiz` SET `quiz_name`='$q_name',`quiz_img`='$img',`quiz_detail`='$detail' WHERE `quiz_id` = '$q_id' ";
+            $status=$_POST['status'];
+            $q_qz = "UPDATE `quiz` SET `quiz_name`='$q_name',`quiz_img`='$img',`quiz_detail`='$detail',`quiz_status`='$status' WHERE `quiz_id` = '$q_id' ";
             $re_qz = mysqli_query($con, $q_qz);
         
             if($re_qz){
@@ -269,7 +271,11 @@ $re_quiz = mysqli_query($con, $q_quiz);
 
                 <!-- script card -->
                 <a href="question.php?id=<?php echo $row_quiz['quiz_id'] ?>" style="text-decoration: none;"><div id="quiz_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:block">
-                    <h2><?php echo $row_quiz['quiz_name'] ?></h2>
+                <?php if($row_quiz['quiz_status']==1){ ?>
+                    <h2 style = "color:green"><?php echo $row_quiz['quiz_name'] ?></h2>
+                <?php }else{ ?>
+                    <h2 style = "color:red"><?php echo $row_quiz['quiz_name'] ?></h2>
+                <?php } ?>
                     <img src="Quiz_image\<?php echo $row_quiz['quiz_img'] ?>" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
                     <p><?php echo $row_quiz['quiz_detail'] ?></p>
                 </div></a>
@@ -315,7 +321,13 @@ $re_quiz = mysqli_query($con, $q_quiz);
                             <input class="w3-input w3-border w3-round" type="file" name = "up_q_img">
                             <p>Detail Quiz : </p>
                             <textarea name="up_q_detail" id="" cols="35" rows="5"><?php echo $row_quiz['quiz_detail'] ?></textarea>
-                            <input class="w3-check" type="checkbox">
+                            <?php 
+                            if($row_quiz['quiz_status']==1){
+                            ?>
+                            <input class="w3-check" type="checkbox" value = '1' name = "status" checked>
+                            <?php }else{ ?>
+                            <input class="w3-check" type="checkbox" value = '1' name = "status">
+                            <?php } ?>
                             <label> : Quiz status can play.</label>
                         </div>
                         <footer class="w3-container w3-teal">
