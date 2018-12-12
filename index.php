@@ -94,7 +94,7 @@
     }
     if(isset($_GET['newname'])){
         $_SESSION['check_login']=$_GET['newname'];
-        $newname_quiz_id = $_SESSION['newname_quiz_id'];
+        $newname_quiz_id = $_GET['s_text'];;
         header('Location:play.php?id='.$newname_quiz_id);
     }
     
@@ -110,7 +110,7 @@
         if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
             $q_id = $row['quiz_id'];
-            $_SESSION['newname_quiz_id'] = $q_id;
+            // $_SESSION['newname_quiz_id'] = $q_id;
             $q_name = $row['quiz_name'];
             $q_img =  $row['quiz_img'];
             $q_play = $row['count_play'];
@@ -313,7 +313,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Are You Ready ?</h4>
+                                                <h4 class="modal-title" style = "color:black">Are You Ready ?</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <a href="play.php?id=<?php echo $q_id ?>" style="text-decoration: none;"><button class="w3-block">Yes</button></a>
@@ -355,7 +355,7 @@
                             </div> -->
 
                             <!-- old search-box -->
-                            <input type="text" class="form-control" placeholder="Enter QuizCode" name="s_text">
+                            <input type="text" class="form-control" placeholder="Enter QuizCode" name="s_text" style = "background-color: #252525;border-color: #F70ACA;color: #99CC33">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"  name="asd" >
                                     <i class="glyphicon glyphicon-search"></i>
@@ -375,10 +375,10 @@
                                 <script>$('#createName').modal('show')</script>
                                 </h3>
                             <?php
-                            for($i=0;$i<count($_SESSION['question']);$i++){
-                                echo $_SESSION['question'][$i].'<br>';
+                            // for($i=0;$i<count($_SESSION['question']);$i++){
+                            //     echo $_SESSION['question'][$i].'<br>';
                                 
-                            }
+                            // }
                         } 
                         // echo getToken(6);
                         ?>
