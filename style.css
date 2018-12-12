@@ -119,7 +119,7 @@ nav::navbar-inverse{
 }
 
 .btn:hover{
-    opacity: 1;
+    opacity: 0.5;
 }
 
 #ghost-btn-cir{
