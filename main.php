@@ -250,7 +250,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
             ?>
             <div class="w3-card-4" id="card">
                 <div class="container-fluid" >
-                    <div class="w3-row ">
+                    <div class="w3-row">
                         <a href="javascript:void(0)" onclick="openCity(event, 'quiz_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');">
                         <div class="w3-third tab_<?php echo $row_quiz['quiz_id'] ?> w3-bottombar w3-hover-light-grey w3-padding ">Quiz</div>
                         </a>
@@ -311,6 +311,8 @@ $re_quiz = mysqli_query($con, $q_quiz);
                             <input class="w3-input w3-border w3-round" type="file" name = "up_q_img">
                             <p>Detail Quiz : </p>
                             <textarea name="up_q_detail" id="" cols="35" rows="5"><?php echo $row_quiz['quiz_detail'] ?></textarea>
+                            <input class="w3-check" type="checkbox">
+                            <label> : Quiz status can play.</label>
                         </div>
                         <footer class="w3-container w3-teal">
                             <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
@@ -343,7 +345,6 @@ $re_quiz = mysqli_query($con, $q_quiz);
                         </div>
                     </div>
                 </div>
-
                 <!-- Script in navbar -->
                 <script>
                     openCity(event, 'quiz_<?php echo $row_quiz['quiz_id'] ?>','main_<?php echo $row_quiz['quiz_id'] ?>','tab_<?php echo $row_quiz['quiz_id'] ?>');
@@ -367,22 +368,22 @@ $re_quiz = mysqli_query($con, $q_quiz);
                     <div class="w3-container" id="stm">
                         <form action="main.php" method="post" enctype="multipart/form-data">
 
-                          <p>Quiz Name : </p>
+                        <p>Quiz Name : </p>
                         <input class="w3-input w3-border w3-round" type="text" name = "q_name">
                         <p>Title Miage : </p>
                         <input class="w3-input w3-border w3-round" type="file" name = "q_img">
                         <p>Detail Quiz : </p>
                         <textarea name="q_detail" id="" cols="35" rows="5"></textarea>
-                    </div>
-                    <footer class="w3-container w3-teal">
-                        <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
-                        <div class="w3-panel" style="width:100%">
-                            <button class="w3-button w3-block w3-teal" type = "submit">Create</button>
-                        </div>
-                        
-                    </footer>
+                        <input class="w3-check" type="checkbox">
+                        <label> : Quiz status can play.</label>
+                        <footer class="w3-container w3-teal">
+                            <!-- <button class="w3-button w3-block w3-teal" style="width:100%">Button</button> -->
+                            <div class="w3-panel" style="width:100%">
+                                <button class="w3-button w3-block w3-teal" type = "submit">Create</button>
+                            </div>
+                        </footer>
                         </form>
-                      
+                    </div>    
                 </div>
             </div>
         </div>
