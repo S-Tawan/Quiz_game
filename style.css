@@ -118,6 +118,10 @@ nav::navbar-inverse{
     margin: 20px;
 }
 
+.btn:hover{
+    opacity: 1;
+}
+
 #ghost-btn-cir{
     border-color: #CBEA00;
     border-width: 4px;
