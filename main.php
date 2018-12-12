@@ -289,8 +289,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
                 <div id="view_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none">
                     <h2>Plays</h2>
                     <p><?php echo $count ?></p>
-                    <h2>Rate</h2>
-                    <p><?php echo $row_quiz['quiz_rate'] ?></p>
+                   
                     <h2>Top Score</h2>
                     <p><?php
                     if($score!=NULL){
