@@ -285,35 +285,44 @@
 
                             
                             ?>
-                                <div class="w3-modal-content w3-animate-top w3-card-4">
-                                    <header class="w3-container w3-teal"> 
-                                        <span onclick="document.getElementById('require_name').style.display='none'" 
-                                        class="w3-button w3-display-topright">&times;</span>
-                                        <h2>Modal Header</h2>
-                                    </header>
-                                    <div class="w3-container">
-                                        <p>Some text..</p>
-                                        <p>Some text..</p>
+                                <!-- ไม่มี -->
+                                <div class="modal-dialog modal-sm" style="color:green;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <label for="">Login or enter Name.</label>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <a href="" style="text-decoration: none;"><button class="w3-block">Login</button></a>
+                                                <hr>
+                                                <input type="text" name="" id="">
+                                                <button type="submit" value="">+</button>
+                                            </form>
+                                        </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
-                                    <footer class="w3-container w3-teal">
-                                        <p>Modal Footer</p>
-                                    </footer>
                                 </div>
                                 <?php } else{ ?>
-                                    <div class="w3-modal-content w3-animate-top w3-card-4">
-                                    <header class="w3-container w3-teal"> 
-                                        <span onclick="document.getElementById('require_name').style.display='none'" 
-                                        class="w3-button w3-display-topright">&times;</span>
-                                        <h2>Modal Header</h2>
-                                    </header>
-                                    <div class="w3-container">
-                                        <p>Some text..</p>
-                                        <p>Some text..</p>
+                                    <!-- มี -->
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Ready to plal</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <a href="" style="text-decoration: none;"><button class="w3-block">Yes</button></a>
+                                                <hr>
+                                                <a href="" style="text-decoration: none;"><button class="w3-block">No</button></a>
+                                            </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <footer class="w3-container w3-teal">
-                                        <p>Modal Footer</p>
-                                    </footer>
-                                </div>
                                 <?php } ?>
                             </div>
                             
