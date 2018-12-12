@@ -1,7 +1,9 @@
 <?php
     require 'server.php';
     // require 'fb-init.php';
-    
+    if(isset($_SESSION['newname_quiz_id'])){     
+        header('Location:index.php?id=logout');
+    }
 
     //facebook login not doit
     //require 'fb-init.php';
@@ -13,6 +15,7 @@
     if(!isset($_SESSION['check_login'])){
       $_SESSION['check_login'] = "0" ;  
     }
+    
     // register
     $re_error = 0;
     if(isset($_POST['re_username'])){
@@ -66,12 +69,7 @@
 
 
 
-    if($_SESSION['check_login']=="0"){
-        $_SESSION['name'] = "I am Guest Mother Fucker";
-    }
-    else{
-        $_SESSION['name'] = $_SESSION['check_login'];
-    }
+  
     
     $_SESSION['score'] = 0;
     $_SESSION['counter'] = 0;
@@ -83,6 +81,7 @@
 
         if(isset($_GET['s_text'])){
             $check = $_GET['s_text']; 
+            
         }
         if(isset($_GET['id'])){
             $logout = $_GET['id'];
@@ -93,12 +92,25 @@
         }
         
     }
+    if(isset($_GET['newname'])){
+        $_SESSION['check_login']=$_GET['newname'];
+        $newname_quiz_id = $_SESSION['newname_quiz_id'];
+        header('Location:play.php?id='.$newname_quiz_id);
+    }
+    
+    if($_SESSION['check_login']=="0"){
+        $_SESSION['name'] = "I am Guest Mother Fucker";
+    }
+    else{
+        $_SESSION['name'] = $_SESSION['check_login'];
+    }
     if($check!='start'){
         $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$check' AND `quiz_status` = '1'";
         $result = mysqli_query($con, $q);
         if ($row = mysqli_fetch_assoc($result)) {
             $text = $row['quiz_id'];
             $q_id = $row['quiz_id'];
+            $_SESSION['newname_quiz_id'] = $q_id;
             $q_name = $row['quiz_name'];
             $q_img =  $row['quiz_img'];
             $q_play = $row['count_play'];
@@ -119,7 +131,7 @@
             $check = 'fail';
         }
     }
-
+  
 
     // ทดสอบ
     function getToken($length){
@@ -219,7 +231,7 @@
 
         </div>
     </div>
-    
+
         <div style = "text-align: center;">
             <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg1"><strong>Q</strong></span>
             <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg2"><strong>u</strong></span>
@@ -278,13 +290,15 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <label for="">Login or enter Name.</label>
+                                            <label for="">Login or Enter Your Name.</label>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post">
-                                                <a href="" style="text-decoration: none;"><button class="w3-block">Login</button></a>
+                                           
+                                                <button class="w3-block" data-dismiss="modal" onclick="document.getElementById('login').style.display='block'" >Login</button>
                                                 <hr>
-                                                <input type="text" name="" id="">
+                                                <form action="index.php" method="GET">
+                                                <input type="text" name="newname" id="">
+                                                <input type="hidden" name="s_text" value = "<?php echo $q_id ?>">
                                                 <button type="submit" value="">+</button>
                                             </form>
                                         </div>
@@ -299,12 +313,12 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Ready to plal</h4>
+                                                <h4 class="modal-title">Are You Ready ?</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <a href="" style="text-decoration: none;"><button class="w3-block">Yes</button></a>
+                                                <a href="play.php?id=<?php echo $q_id ?>" style="text-decoration: none;"><button class="w3-block">Yes</button></a>
                                                 <hr>
-                                                <a href="" style="text-decoration: none;"><button class="w3-block">No</button></a>
+                                                <a href="" style="text-decoration: none;"><button class="w3-block" onclick="document.getElementById('require_name').style.display='none'">No</button></a>
                                             </div>
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
