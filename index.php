@@ -355,7 +355,7 @@
                             </div> -->
 
                             <!-- old search-box -->
-                            <input type="text" class="form-control" placeholder="Enter QuizCode" name="s_text">
+                            <input type="text" class="form-control" placeholder="Enter QuizCode" name="s_text" style = "background-color: #252525;border-color: #F70ACA;color: #99CC33">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"  name="asd" >
                                     <i class="glyphicon glyphicon-search"></i>
