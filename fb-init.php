@@ -21,7 +21,7 @@
     //     //throw $th;
     // }
 
-    session_start();
+    // session_start();
     ini_set('display_errors', 1);
     require_once __DIR__ . '\vendor\facebook\graph-sdk\src\Facebook\autoload.php';
 

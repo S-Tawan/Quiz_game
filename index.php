@@ -1,5 +1,7 @@
 <?php
     require 'server.php';
+    require 'fb-init.php';
+    
 
     //facebook login not doit
     //require 'fb-init.php';
@@ -155,6 +157,7 @@
 
             </div>
             <?php if($_SESSION['name']!="I am Guest Mother Fucker"){ ?>
+                <a class="navbar-brand" href="main.php">MyQuiz</a>
                 <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?></a></li>
                 <li><a href="index.php?id=logout">LOGOUT</a></li>
