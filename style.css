@@ -122,10 +122,6 @@ nav::navbar-inverse{
     opacity: 0.5;
 }
 
-.btn:active{
-    background-color : black;
-}
-
 #ghost-btn-cir{
     border-color: #CBEA00;
     border-width: 4px;
