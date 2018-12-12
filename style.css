@@ -146,11 +146,11 @@ nav::navbar-inverse{
    
    
 }
-input[type=text]{
+/* input[type=text]{
     background-color: #252525;
     border-color: #F70ACA;
     color: #99CC33
-}
+} */
 
 ::placeholder{
     color: deepskyblue;
