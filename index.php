@@ -262,7 +262,7 @@
             <div class="modal-body" style="background-color:#5B6770" >
                 <center>
                     <div class="container-fluid" style="border-color:#6A9955;border-style:solid;border-radius:5px">
-                        <img src="image\tmp_test_img.png" alt="" sizes="width:100px;height:100px" srcset="">
+                        <img src="Quiz_image\<?php echo $q_img ?>" alt="" style = "height:300px;max-width:100%;margin-top: 20px;margin-bottom: 20px;" srcset="">
                     </div>
                 </center>
                 <p></p> 
@@ -413,7 +413,7 @@
 
     setTimeout(function(){
         randomfontcolor (eiei);
-        }, 100);
+        }, 150);
     };
 
 
