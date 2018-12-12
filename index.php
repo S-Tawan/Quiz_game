@@ -8,9 +8,68 @@
     <?php //}else{ ?>
         <!-- <a href="<?php //echo $login_url;?>">Login FB</a> -->
     <?php //}
+    if(!isset($_SESSION['check_login'])){
+      $_SESSION['check_login'] = 0 ;  
+    }
+    // register
+    $re_error = 0;
+    if(isset($_POST['re_username'])){
+        if($_POST['re_psw']==$_POST['re_con_psw']){
+            $re_username=$_POST['re_username'];
+            $re_psw = $_POST['re_psw'];
+            $q_user = "SELECT `user_id` FROM `user` WHERE `user_id`= '$re_username'";
+            $re_user = mysqli_query($con, $q_user);
+            if($row_user = mysqli_fetch_assoc($re_user)){
+                //Username ซ้ำ
+                $re_error = 1;
+            }
+            else{
+                // สำเร็จ
+                $q_user_ins = "INSERT INTO `user`(`user_id`,`password`) VALUES ('$re_username','$re_psw')";
+                $re_user_ins = mysqli_query($con, $q_user_ins);
+                if($re_user_ins){
+                   $_SESSION['check_login'] = $re_username ; 
+                }
+                else{
+                    //ผิดพลาด
+                    $re_error = 3;
+                }
+                
+            }
+           
+        }
+        else{
+            // พาสไม่ตรง
+            $re_error = 2;
+        }
+    }
+    // login
+    if(isset($_POST['log_username'])){
+        // echo "eiei";
+        $log_username=$_POST['log_username'];
+        $log_psw = $_POST['log_psw'];
+        $q_user_log = "SELECT `user_id`,`password` FROM `user` WHERE `user_id`= '$log_username' AND `password` = '$log_psw' ";
+        $re_user_log  = mysqli_query($con, $q_user_log );
+        if($row_user_log = mysqli_fetch_assoc($re_user_log)){
+            //สำเร็จ
+            $_SESSION['check_login'] = $log_username ; 
+            echo "YESSSSSS";
+        }
+        else{
+            // ไม่สำเร็จ
+            echo "NOOOOOO";
+        }
+    }
 
-    // $_SESSION['name'] = "Singha_".getToken(6);
-    $_SESSION['name'] = "I am Guest Mother Fucker";
+
+
+    if($_SESSION['check_login']==0){
+        $_SESSION['name'] = "I am Guest Mother Fucker";
+    }
+    else{
+        $_SESSION['name'] = $_SESSION['check_login'];
+    }
+    
     $_SESSION['score'] = 0;
     $_SESSION['counter'] = 0;
     $_SESSION['correct'] = 0;
@@ -18,7 +77,18 @@
     $check = 'start';
     $_SESSION['question']=NULL;
     if ($_GET != null) {
-        $check = $_GET['s_text'];
+
+        if(isset($_GET['s_text'])){
+            $check = $_GET['s_text']; 
+        }
+        if(isset($_GET['id'])){
+            $logout = $_GET['id'];
+            if($logout == "logout"){
+                session_destroy();
+                header("Location: index.php");
+            }
+        }
+        
     }
     if($check!='start'){
         $q = "SELECT * FROM `quiz` WHERE `quiz_id` ='$check' AND `quiz_status` = '1'";
@@ -59,7 +129,7 @@
        }
        return $token;
    }
-   
+//    echo $re_error ;
 ?>
 
 <!DOCTYPE html>
@@ -81,25 +151,35 @@
     <nav class="navbar navbar-inverse"  style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">HOME</a>
+                <a class="navbar-brand" href="index.php">HOME  <?php echo $_SESSION['name'] ?> </a>
+
             </div>
+            <?php if($_SESSION['name']!="I am Guest Mother Fucker"){ ?>
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?></a></li>
+                <li><a href="index.php?id=logout">LOGOUT</a></li>
+                </ul>
+            <?php } else { ?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" onclick="document.getElementById('sign_in').style.display='block'"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="#" onclick="document.getElementById('login').style.display='block'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
+            <?php } ?>
         </div>
     </nav>
     <!-- Sign in form -->
     <div id="sign_in" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
-        <form class="w3-container" action="index.php">
+        <form class="w3-container" action="index.php" method="post" >
             <div class="w3-section">
                 <label><b>Username</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="re_usrname" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="re_username" required>
                 <label><b>Password</b></label>
                 <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="re_psw" required>
-                <p></p><label><b>Name</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="re_name" required>
+                <label><b>Confirm-Password</b></label>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Confirm-Password" name="re_con_psw" required>
+                <!-- <p></p><label><b>Name</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="re_name" required> -->
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">register</button>
             </div>
         </form>
@@ -114,12 +194,12 @@
     <div id="login" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
 
-        <form class="w3-container" action="/action_page.php">
+        <form class="w3-container" action="index.php" method="post">
             <div class="w3-section">
                 <label><b>Username</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="log_username" required>
                 <label><b>Password</b></label>
-                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="log_psw" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
             </div>
         </form>

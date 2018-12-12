@@ -174,17 +174,17 @@ if(isset($_POST['del_quiz_id'])){
     $del_quiz_id = $_POST['del_quiz_id']; 
     $q_quiz_del = "DELETE FROM `quiz` WHERE `quiz_id` = '$del_quiz_id'";
     $re_quiz_del = mysqli_query($con, $q_quiz_del);
-    $row_quiz_del = mysqli_fetch_assoc($re_quiz_del);
+    // $row_quiz_del = mysqli_fetch_assoc($re_quiz_del);
     $q_ques_del = "DELETE FROM `question` WHERE `quiz_id` = '$del_quiz_id'";
     $re_ques_del = mysqli_query($con, $q_ques_del);
-    $row_ques_del = mysqli_fetch_assoc($re_ques_del);
+    // $row_ques_del = mysqli_fetch_assoc($re_ques_del);
     $q_ques = "SELECT `question_id` FROM `question` WHERE `quiz_id` = '$del_quiz_id'";
     $re_ques = mysqli_query($con, $q_ques);
     while($row_ques = mysqli_fetch_assoc($re_ques)){
         $ques_del = $row_ques['question_id'];
         $q_ans_del = "DELETE FROM `answers` WHERE `question_id` = '$ques_del'";
         $re_ans_del = mysqli_query($con, $q_ans_del);
-        $row_ans_del = mysqli_fetch_assoc($re_ans_del);
+        // $row_ans_del = mysqli_fetch_assoc($re_ans_del);
     }
     
 
