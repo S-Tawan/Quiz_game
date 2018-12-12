@@ -278,7 +278,7 @@ if(isset($_POST['up_ques_name'])){
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
@@ -289,6 +289,11 @@ if(isset($_POST['up_ques_name'])){
             </ul>
         </div>
     </nav>
+    <div style = "text-align: center;color:whitesmoke;font-size:100px;font-family: 'Kanit', sans-serif;margin-top:-20px;">
+            MyQuestion
+    </div>
+    
+   
 
     <div class="row">
         <div class="col-md-1"></div>

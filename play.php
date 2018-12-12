@@ -100,13 +100,13 @@
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $name ?></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $name ?></a></li>
             </ul>
         </div>
     </nav>

@@ -11,7 +11,7 @@
         <!-- <a href="<?php //echo $login_url;?>">Login FB</a> -->
     <?php //}
     if(!isset($_SESSION['check_login'])){
-      $_SESSION['check_login'] = 0 ;  
+      $_SESSION['check_login'] = "0" ;  
     }
     // register
     $re_error = 0;
@@ -30,7 +30,8 @@
                 $q_user_ins = "INSERT INTO `user`(`user_id`,`password`) VALUES ('$re_username','$re_psw')";
                 $re_user_ins = mysqli_query($con, $q_user_ins);
                 if($re_user_ins){
-                   $_SESSION['check_login'] = $re_username ; 
+                    $re_error = 4;
+                    $_SESSION['check_login'] = $re_username ; 
                 }
                 else{
                     //ผิดพลาด
@@ -47,7 +48,7 @@
     }
     // login
     if(isset($_POST['log_username'])){
-        // echo "eiei";
+        $check_log = 0;
         $log_username=$_POST['log_username'];
         $log_psw = $_POST['log_psw'];
         $q_user_log = "SELECT `user_id`,`password` FROM `user` WHERE `user_id`= '$log_username' AND `password` = '$log_psw' ";
@@ -55,17 +56,17 @@
         if($row_user_log = mysqli_fetch_assoc($re_user_log)){
             //สำเร็จ
             $_SESSION['check_login'] = $log_username ; 
-            echo "YESSSSSS";
+            
         }
         else{
             // ไม่สำเร็จ
-            echo "NOOOOOO";
+            $check_log = 1;
         }
     }
 
 
 
-    if($_SESSION['check_login']==0){
+    if($_SESSION['check_login']=="0"){
         $_SESSION['name'] = "I am Guest Mother Fucker";
     }
     else{
@@ -146,6 +147,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <title>QuizSiJa</title>
@@ -155,7 +157,7 @@
     <nav class="navbar navbar-inverse"  style = "background-color:#19261e">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">HOME  <?php echo $_SESSION['name'] ?> </a>
+                <a class="navbar-brand" href="index.php">HOME</a>
 
             </div>
             <?php if($_SESSION['name']!="I am Guest Mother Fucker"){ ?>
@@ -166,7 +168,7 @@
                 </ul>
             <?php } else { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" onclick="document.getElementById('sign_in').style.display='block'"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#" onclick="document.getElementById('sign_in').style.display='block'"><span class="glyphicon glyphicon-user"></span> Sign In</a></li>
                 <li><a href="#" onclick="document.getElementById('login').style.display='block'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
             <?php } ?>
@@ -217,21 +219,7 @@
 
         </div>
     </div>
-
-    <div id = 'box' ></div>
-    <!-- Card -->
-    <!-- <div class="wrap">
-        <div class="card">
-            <div class="container-left">
-                <p>G-text 1</p>
-                <p>G-text 2</p>
-                <p>G-text 3</p>
-            </div>
-        </div>
-    </div> -->
-
-        <!-- background -->
-        <!-- <img src="image\BackGround quizSija.png" style="width:100%;margin-top:-110px"> -->
+    
         <div style = "text-align: center;">
             <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg1"><strong>Q</strong></span>
             <span style = "text-align: center;color:whitesmoke;font-size:350px;font-family: 'Kanit', sans-serif" id = "bg2"><strong>u</strong></span>
@@ -414,4 +402,26 @@
         }
         return color;
     }
+        var check = <?php echo $re_error ?>;
+        if(check==1){
+          swal("Username is already used.", "Plese try again.", "error");  
+        }
+        else if(check==2){
+            swal("Password is not match.", "Plese try again.", "error");  
+        }
+        else if(check==3){
+            swal("It's Fail.", "Plese try again.", "error");  
+        }
+        else if(check==4){
+            swal("Success.", "Let'go to play it.", "success");  
+        }     
+</script>
+<script>
+
+ var check_log = <?php echo $check_log ?>;
+        if(check_log==1){
+          swal("Username or Password it's wrong.", "Plese try again.", "error");  
+        }
+      
+
 </script>
