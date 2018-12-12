@@ -295,11 +295,12 @@
                                         <div class="modal-body">
                                            
                                                 <button class="w3-block" data-dismiss="modal" onclick="document.getElementById('login').style.display='block'" >Login</button>
-                                                <hr>
+                                                <p></p>
+                                                <p>or</p>
                                                 <form action="index.php" method="GET">
-                                                <input type="text" name="newname" id="">
+                                                <input type="text" name="newname" id="" placeholder = "Enter Your Name">
                                                 <input type="hidden" name="s_text" value = "<?php echo $q_id ?>">
-                                                <button type="submit" value="">+</button>
+                                                <button type="submit" value="">go</button>
                                             </form>
                                         </div>
                                             <div class="modal-footer">

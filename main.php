@@ -253,6 +253,11 @@ $re_quiz = mysqli_query($con, $q_quiz);
                  $re_TOP = mysqli_query($con, $q_TOP);
                  $row_TOP = mysqli_fetch_assoc($re_TOP);
                  $score =  $row_TOP['score_point'];
+                 $q_count = "SELECT count(*) AS Mycount FROM `score` WHERE `quiz_id` = '$quiz_id' ";
+                 $re_count = mysqli_query($con, $q_count);
+                 $row_count = mysqli_fetch_assoc($re_count);
+                 $count =  $row_count['Mycount'];
+
                 
             ?>
             <div class="w3-card-4" id="card">
@@ -283,7 +288,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
 
                 <div id="view_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:none">
                     <h2>Plays</h2>
-                    <p><?php echo $row_quiz['count_play'] ?></p>
+                    <p><?php echo $count ?></p>
                     <h2>Rate</h2>
                     <p><?php echo $row_quiz['quiz_rate'] ?></p>
                     <h2>Top Score</h2>
