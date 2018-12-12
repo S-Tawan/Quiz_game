@@ -92,14 +92,14 @@
     <!-- Sign in form -->
     <div id="sign_in" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
-        <form class="w3-container" action="/action_page.php">
+        <form class="w3-container" action="index.php">
             <div class="w3-section">
                 <label><b>Username</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="re_usrname" required>
                 <label><b>Password</b></label>
-                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="re_psw" required>
                 <p></p><label><b>Name</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="name" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="re_name" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">register</button>
             </div>
         </form>
