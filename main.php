@@ -214,6 +214,7 @@ $re_quiz = mysqli_query($con, $q_quiz);
     <title>MyQuiz</title>
 
     <!-- boostsratp&MyCSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -272,9 +273,9 @@ $re_quiz = mysqli_query($con, $q_quiz);
                 <!-- script card -->
                 <a href="question.php?id=<?php echo $row_quiz['quiz_id'] ?>" style="text-decoration: none;"><div id="quiz_<?php echo $row_quiz['quiz_id'] ?>" class="w3-container main_<?php echo $row_quiz['quiz_id'] ?> w3-animate-opacity" style="display:block">
                 <?php if($row_quiz['quiz_status']==1){ ?>
-                    <h2 style = "color:green"><?php echo $row_quiz['quiz_name'] ?></h2>
+                    <h2 style = "color:green"><i class="fas fa-clipboard-check"></i> <?php echo $row_quiz['quiz_name'] ?></h2>
                 <?php }else{ ?>
-                    <h2 style = "color:red"><?php echo $row_quiz['quiz_name'] ?></h2>
+                    <h2 style = "color:red"><i class="fas fa-clock"></i> <?php echo $row_quiz['quiz_name'] ?></h2>
                 <?php } ?>
                     <img src="Quiz_image\<?php echo $row_quiz['quiz_img'] ?>" class="w3-round" alt="" style="height:100px;max-width:100%" srcset="">
                     <p><?php echo $row_quiz['quiz_detail'] ?></p>
