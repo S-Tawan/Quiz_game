@@ -43,7 +43,6 @@
 
     $loginUrl = $helper->getLoginUrl('http://localhost:8080/Quiz_game/quiz_detail.php', $permissions);
 
-    echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
-    $_SESSION['login_url'] = "' . $loginUrl . '";
+    // echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 
 ?>
