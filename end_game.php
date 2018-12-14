@@ -110,15 +110,23 @@
                                 $i = 1;
                                 while($row_TOP = mysqli_fetch_assoc($re_TOP)){ 
                                     if($row_TOP['score_id']==$_SESSION['new_sc']){
-                                        
-                                    }
+                                   
                                 ?>
-                            <tr>
+                            <tr id = "toptop">
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $row_TOP['user_name'] ?></td>
                                 <td><?php echo $row_TOP['score_point'] ?></td>
                             </tr>
-                                <?php
+                                    <?php }else { ?>
+                                        
+                                        <tr >
+                                <td><?php echo $i ?></td>
+                                <td><?php echo $row_TOP['user_name'] ?></td>
+                                <td><?php echo $row_TOP['score_point'] ?></td>
+                            </tr>
+                                        
+
+                                    <?php }
                              $i++;
                             } 
                              ?>
@@ -143,6 +151,10 @@
       randomfontcolor('random3');
       randomfontcolor('random4');
       randomfontcolor('random5');
+      randomfontcolor('toptop');
+
+      
+
 
 function randomfontcolor (eiei){
 
