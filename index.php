@@ -1,5 +1,5 @@
 <?php
-    require 'server.php';
+    // require 'server.php';
     // require 'fb-init.php';
     if(isset($_SESSION['newname_quiz_id'])){     
         header('Location:index.php?id=logout');
@@ -398,34 +398,31 @@
 </html>
 
 <script>
-    randomfontcolor('bg1');
-    randomfontcolor('bg2');
-    randomfontcolor('bg3');
-    randomfontcolor('bg4');
-    randomfontcolor('bg5');
-    randomfontcolor('bg6');
-    randomfontcolor('bg7');
-    randomfontcolor('bg8');
-
-    function randomfontcolor (eiei){
-
+    randomfontcolor('bg1',0);
+    randomfontcolor('bg2',20);
+    randomfontcolor('bg3',40);
+    randomfontcolor('bg4',60);
+    randomfontcolor('bg5',80);
+    randomfontcolor('bg6',100);
+    randomfontcolor('bg7',120);
+    randomfontcolor('bg8',140);
+    // var gogo = 0.00;
+    function randomfontcolor (eiei,gogo){
+        if(gogo>360){
+            gogo=0;
+        }
     var random = document.getElementById(eiei);
-    random.style.color = getRandomColor();
-
+    random.style.color =  "hsl("+(gogo+=0.5)+", 100%, 50%)";
     setTimeout(function(){
-        randomfontcolor (eiei);
-        }, 150);
+        randomfontcolor (eiei,gogo);
+        },1);
     };
 
 
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
+    // function getRandomColor() {
+    //      hsl(360, 100%, 100%)
+    //     return color;
+    // }
         var check = <?php echo $re_error ?>;
         if(check==1){
           swal("Username is already used.", "Plese try again.", "error");  
@@ -442,10 +439,10 @@
 </script>
 <script>
 
- var check_log = <?php echo $check_log ?>;
-        if(check_log==1){
-          swal("Username or Password it's wrong.", "Plese try again.", "error");  
-        }
+//  var check_log = ;
+//         if(check_log==1){
+//           swal("Username or Password it's wrong.", "Plese try again.", "error");  
+//         }
       
 
-</script>
+// </script>
